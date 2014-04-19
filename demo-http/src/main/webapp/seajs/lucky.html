@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <title>Lucky Ball</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/lucky.css">
+</head>
+<body>
+<button id="go" data-text-start="Space to Start" data-text-stop="Space to Stop" data-action="start"></button>
+
+<div id="container">
+    <ul id="balls">
+    </ul>
+    <ul id="lucky-balls">
+    </ul>
+</div>
+
+<script src="./js/sea.js"></script>
+<script>
+
+    // Set configuration
+    seajs.config({
+        base: "../seajs/",
+        alias: {
+            "jquery": "js/jquery.js",
+            "jquery-easing": "js/easing.js"
+        }
+    });
+
+    seajs.use("./js/main");
+</script>
+
+</body>
+</html>

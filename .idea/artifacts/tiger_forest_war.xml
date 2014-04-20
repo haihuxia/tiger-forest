@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="tiger-forest:war">
+    <output-path>$PROJECT_DIR$/tiger-forest/target</output-path>
+    <root id="archive" name="tiger-forest.war">
+      <element id="artifact" artifact-name="tiger-forest:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -4,9 +4,6 @@ import com.xhh.demo.http.practice.resolve.model.Box;
 import com.xhh.demo.http.practice.resolve.model.ChalkBox;
 import com.xhh.demo.http.practice.resolve.model.PencilBox;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Type;
-
 /**
  * Created by tiger on 14-4-24.
  */
@@ -44,6 +41,6 @@ public class BoxResolve {
     public static void main(String[] args) {
         BoxResolve boxResolve = new BoxResolve();
         boxResolve.resolve(boxResolve.createChalkBox());
-        //boxResolve.resolve(boxResolve.createPencilBox());
+        boxResolve.resolve(boxResolve.createPencilBox());
     }
 }

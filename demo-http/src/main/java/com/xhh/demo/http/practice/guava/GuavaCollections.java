@@ -5,6 +5,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Splitter;
 import com.google.common.collect.*;
 import com.google.common.primitives.Ints;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import java.util.Map;
 /**
  * Created by tiger on 14-6-4.
  */
+@Service
 public class GuavaCollections {
 
     public void demo() {

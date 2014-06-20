@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * 夏海虎
+ * tiger
  * Date: 2013-07-23
  */
 @Slf4j

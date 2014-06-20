@@ -1,7 +1,7 @@
 package com.xhh.demo.http.practice.algorithms.util;
 
 /**
- * Created by 夏海虎 on 2014/3/27.
+ * Created by tiger on 2014/3/27.
  */
 public interface DrawListener {
 

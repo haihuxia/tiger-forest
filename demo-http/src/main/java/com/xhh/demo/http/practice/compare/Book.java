@@ -11,7 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Created by 夏海虎 on 2014/4/3.
+ * Created by tiger on 2014/4/3.
  */
 @ToString
 public class Book implements Comparable<Book> {

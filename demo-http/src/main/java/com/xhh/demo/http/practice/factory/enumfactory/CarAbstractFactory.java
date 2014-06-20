@@ -3,7 +3,7 @@ package com.xhh.demo.http.practice.factory.enumfactory;
 import com.xhh.demo.http.practice.factory.Car;
 
 /**
- * Created by 夏海虎 on 2014/4/3.
+ * Created by tiger on 2014/4/3.
  */
 public enum CarAbstractFactory {
 

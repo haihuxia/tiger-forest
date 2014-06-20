@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by 夏海虎 on 2014/4/3.
+ * Created by tiger on 2014/4/3.
  *
  * Trove 每个集合乘以一个值
  */

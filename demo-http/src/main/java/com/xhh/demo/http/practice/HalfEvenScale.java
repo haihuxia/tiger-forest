@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 /**
- * Created by 夏海虎 on 2014/4/2.
+ * Created by tiger on 2014/4/2.
  */
 public class HalfEvenScale {
 

@@ -9,6 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>demo-http</module>
+        <module>demo-bank</module>
     </modules>
     <packaging>pom</packaging>
     <name>Tiger Forest</name>

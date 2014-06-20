@@ -4,7 +4,7 @@ import com.xhh.demo.http.practice.aop.spring.BookService;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by 夏海虎 on 2014/4/9.
+ * Created by tiger on 2014/4/9.
  */
 @Service
 public class BookServiceImpl {

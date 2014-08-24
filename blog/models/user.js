@@ -63,8 +63,8 @@ User.get = function(name, callback){
                 mongodb.close();
                 return callback(err);
             }
-            //将用户数据插入 users 集合
-            collection.findOne(user, {
+            //查找用户名（name键）值为 name 一个文档
+            collection.findOne({
                 name: name
             }, function (err, user) {
                 mongodb.close();

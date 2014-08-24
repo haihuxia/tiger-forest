@@ -57,10 +57,31 @@ module.exports = function(app){
     });
 
     app.get('/login', function(req, res){
-        res.render('login', {title: '登录'});
+        res.render('login', {
+            title: '登录',
+            user: req.session.user,
+            success: req.flash('success').toString(),
+            error: req.flash('error').toString()});
     });
     app.post('/login', function(req, res){
-
+        //生成密码的 md5 值
+        var md5 = crypto.createHash('md5'),
+            password = md5.update(req.body.password).digest('hex');
+        //检查用户是否存在
+        User.get(req.body.name, function(err, user){
+            if(!user){
+                req.flash('error', '用户不存在！');
+                return res.redirect('/login');
+            }
+            //检查密码是否一致
+            if(user.password != password){
+                req.flash('error', '密码错误！');
+                return res.redirect('login');
+            }
+            req.session.user = user; //信息存入 session
+            req.flash('success', '登录成功！');
+            res.redirect('/'); //注册成功后返回主页
+        });
     });
 
     app.get('/post', function(req, res){
@@ -71,6 +92,8 @@ module.exports = function(app){
     });
 
     app.get('/logout', function(req, res){
-
+        req.session.user = null;
+        req.flash('success', '登出成功！');
+        res.redirect('/');
     });
 };

@@ -10,6 +10,7 @@
     <modules>
         <module>demo-http</module>
         <module>demo-bank</module>
+        <module>demo-hadoop</module>
     </modules>
     <packaging>pom</packaging>
     <name>Tiger Forest</name>

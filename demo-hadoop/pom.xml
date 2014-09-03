@@ -18,11 +18,6 @@
             <artifactId>hadoop-core</artifactId>
             <version>1.2.1</version>
         </dependency>
-        <!--<dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-mapreduce</artifactId>
-            <version>2.5.0</version>
-        </dependency>-->
     </dependencies>
 
     <build>
@@ -33,7 +28,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.xhh.demo.hadoop.WordCount</mainClass>
+                            <mainClass>com.xhh.demo.hadoop.MaxNumberFind</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

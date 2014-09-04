@@ -23,6 +23,10 @@ public class MaxNumberMapper extends MapReduceBase implements Mapper<Object, Tex
     public void map(Object o, Text text, OutputCollector<LongWritable,
             LongWritable> textIntWritableOutputCollector,
                     Reporter reporter) throws IOException {
+        //过滤无效数据
+        if(null == text || text.equals("")){
+            return;
+        }
         String textStr = text.toString();
         //读取 CSV 文件中的数据可能会带一些特殊符号，替换处理 TODO 该处理有待优化
         textStr = textStr.trim().replaceAll(" ", "").replaceAll("\"", "");

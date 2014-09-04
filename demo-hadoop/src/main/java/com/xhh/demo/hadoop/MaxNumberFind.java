@@ -1,5 +1,6 @@
 package com.xhh.demo.hadoop;
 
+import com.xhh.demo.hadoop.number.MaxNumberCombiner;
 import com.xhh.demo.hadoop.number.MaxNumberMapper;
 import com.xhh.demo.hadoop.number.MaxNumberReducer;
 import com.xhh.demo.hadoop.number.MaxNumberSort;
@@ -45,6 +46,7 @@ public class MaxNumberFind {
         conf.setOutputKeyComparatorClass(MaxNumberSort.class);
 
         conf.setMapperClass(MaxNumberMapper.class);
+        conf.setCombinerClass(MaxNumberCombiner.class);
         conf.setReducerClass(MaxNumberReducer.class);
 
         conf.setInputFormat(TextInputFormat.class);

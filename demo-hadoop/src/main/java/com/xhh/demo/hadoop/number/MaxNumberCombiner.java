@@ -12,7 +12,9 @@ import java.util.Iterator;
 /**
  * Created by tiger on 9/3/14.
  *
- * 处理数据 Reducer
+ * 处理数据 Combiner
+ *
+ * 仅传递前5个数字给 Reducer 处理
  *
  */
 public class MaxNumberCombiner extends MapReduceBase implements Reducer<LongWritable, LongWritable, LongWritable, LongWritable> {

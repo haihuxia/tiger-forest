@@ -1,7 +1,8 @@
 /**
  * Created by tiger on 14-9-5.
  */
-var mongodb = require('./db');
+var mongodb = require('./db'),
+    markdown = require('markdown').markdown;
 
 function Post(name, title, post){
     this.name = name;
@@ -14,7 +15,7 @@ module.exports = Post;
 //存储一篇文章及其相关信息
 Post.prototype.save = function(callback) {
     var date = new Date();
-    //村粗各种时间格式，方便以后扩展
+    //存储各种时间格式，方便以后扩展
     var time = {
         date: date,
         year: date.getFullYear(),
@@ -27,6 +28,7 @@ Post.prototype.save = function(callback) {
     //要存入数据库的文档
     post = {
         name: this.name,
+        time: time,
         title: this.title,
         post: this.post
     }
@@ -58,12 +60,6 @@ Post.prototype.save = function(callback) {
 
 //读取文章信息
 Post.get = function(name, callback){
-    var user = {
-        name: this.name,
-        password: this.password,
-        email: this.email
-    };
-
     mongodb.open(function(err, db){
         if(err){
             return callback(err);
@@ -86,6 +82,10 @@ Post.get = function(name, callback){
                 if (err) {
                     return callback(err);
                 }
+                //解析 markdown 为 html
+                docs.forEach(function(doc){
+                    doc.post = markdown.toHTML(doc.post);
+                });
                 callback(null, docs); //成功！以数组形式返回查询的结果
             });
         });

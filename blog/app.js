@@ -10,6 +10,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var settings = require('./settings');
 var flash = require('connect-flash');
+var multipart = require('connect-multiparty');
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(multipart({ uploadDir: './public/images' }));
 app.use(cookieParser());
 app.use(session({
     secret: settings.cookieSecret,

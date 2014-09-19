@@ -31,7 +31,7 @@ Post.prototype.save = function(callback) {
         time: time,
         title: this.title,
         post: this.post
-    }
+    };
 
     //打开数据库
     mongodb.open(function (err, db) {
@@ -58,8 +58,8 @@ Post.prototype.save = function(callback) {
     });
 };
 
-//读取文章信息
-Post.get = function(name, callback){
+//读取所有文章信息
+Post.getAll = function(name, callback){
     mongodb.open(function(err, db){
         if(err){
             return callback(err);
@@ -87,6 +87,36 @@ Post.get = function(name, callback){
                     doc.post = markdown.toHTML(doc.post);
                 });
                 callback(null, docs); //成功！以数组形式返回查询的结果
+            });
+        });
+    })
+};
+
+//读取文章信息
+Post.getOne = function(name, day, title, callback){
+    mongodb.open(function(err, db){
+        if(err){
+            return callback(err);
+        }
+        //读取 posts 集合
+        db.collection('posts', function (err, collection) {
+            if (err) {
+                mongodb.close();
+                return callback(err);
+            }
+            //根据 query 对象查询文章
+            collection.findOne({
+                "name": name,
+                "time.day": day,
+                "title": title
+            }, function (err, doc) {
+                mongodb.close();
+                if (err) {
+                    return callback(err);
+                }
+                //解析 markdown 为 html
+                doc.post = markdown.toHTML(doc.post);
+                callback(null, doc); //返回查询的一篇文章
             });
         });
     })

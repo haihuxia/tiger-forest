@@ -5,28 +5,31 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var http = require('http');
-var routes = require('./routes/index');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
-var settings = require('./settings');
 var flash = require('connect-flash');
 var multipart = require('connect-multiparty');
 
+var settings = require('./settings');
+var routes = require('./routes/index');
+
 var app = express();
+
+app.set('port', process.env.PORT||8080);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.use(flash());
 
-app.set('port', process.env.PORT||8080);
-
 app.use(favicon());
+// app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(multipart({ uploadDir: './public/images' }));
 app.use(cookieParser());
+
 app.use(session({
     secret: settings.cookieSecret,
     key: settings.db, // cookie name
@@ -35,6 +38,7 @@ app.use(session({
         db: settings.db
     })
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 routes(app);
@@ -70,6 +74,6 @@ app.use(function(err, req, res, next) {
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Exprss server listening on port ' + app.get('port'));
-})
+});
 
 module.exports = app;

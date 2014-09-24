@@ -13,6 +13,10 @@ var multipart = require('connect-multiparty');
 var settings = require('./settings');
 var routes = require('./routes/index');
 
+var fs = require('fs');
+var accessLog = fs.createWriteStream('access.log', {flags: 'a'});
+var errorLog = fs.createWriteStream('error.log', {flags: 'a'});
+
 var app = express();
 
 app.set('port', process.env.PORT||8080);
@@ -25,6 +29,8 @@ app.use(flash());
 app.use(favicon());
 // app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));
+app.use(logger({stream: accessLog}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(multipart({ uploadDir: './public/images' }));
@@ -40,6 +46,12 @@ app.use(session({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function (err, req, res, next) {
+    var meta = '[' + new Date() + '] ' + req.url + '\n';
+    errorLog.write(meta + err.stack + '\n');
+    next();
+});
 
 routes(app);
 

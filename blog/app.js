@@ -38,11 +38,12 @@ app.use(cookieParser());
 
 app.use(session({
     secret: settings.cookieSecret,
-    key: settings.db, // cookie name
     cookie: {maxAge: 1000 * 60 * 60}, // 1 hour
-    store: new MongoStore({
-        db: settings.db
-    })
+    url: settings.url
+    //key: settings.db, // cookie name
+    //store: new MongoStore({
+    //    db: settings.db
+    //})
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));

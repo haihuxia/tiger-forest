@@ -3,6 +3,7 @@
  */
 module.exports = {
     cookieSecret: 'myblog',
-    db: 'blog',
-    host: 'localhost'
+    url: 'mongodb://samlQPdua4rB4thtMRoOwAx0:VdNU9FGvVWQVFV1ZxVlruB2499ct67pl@mongo.duapp.com:8908/RnAXruJsxRwJYqSNRSMy'
+    //db: 'blog',
+    //host: 'localhost'
 }

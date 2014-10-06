@@ -18,6 +18,7 @@
         "connect-mongo": "*",
         "connect-flash": "*",
         "connect-multiparty": "*",
-        "markdown": "*"
+        "markdown": "*",
+        "mongoose": "*"
     }
 }

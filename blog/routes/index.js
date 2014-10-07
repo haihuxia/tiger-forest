@@ -1,8 +1,7 @@
 var crypto = require('crypto'),
     fs = require('fs'),
     User = require('../models/user'),
-    Post = require('../models/post'),
-    Comment = require('../models/comment.js');
+    Post = require('../models/post');
 
 module.exports = function(app){
     app.get('/', function (req, res) {
@@ -295,8 +294,8 @@ module.exports = function(app){
             time: time,
             content: req.body.content
         };
-        var newComment = new Comment(req.params.name, req.params.day, req.params.title, comment);
-        newComment.save(function (err) {
+        //var newComment = new Comment(req.params.name, req.params.day, req.params.title, comment);
+        Post.comment(req.params.name, req.params.day, req.params.title, comment, function (err) {
             if (err) {
                 req.flash('error', err);
                 return res.redirect('back');

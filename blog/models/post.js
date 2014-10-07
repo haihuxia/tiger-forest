@@ -105,7 +105,7 @@ Post.getOne = function(name, day, title, callback) {
             //解析 markdown 为 html
             doc.post = markdown.toHTML(doc.post);
             doc.comments.forEach(function (comment) {
-                comment.content = markdown.toHTML(comment.content);
+                comment.comment.content = markdown.toHTML(comment.comment.content);
             });
             callback(null, doc);//返回查询的一篇文章
         }
@@ -140,7 +140,7 @@ Post.remove = function(name, day, title, callback) {
         }
         //如果有 reprint_from，即该文章是转载来的，先保存下来 reprint_from
         var reprint_from = "";
-        if (doc.reprint_info.reprint_from) {
+        if (doc.reprint_info && doc.reprint_info.reprint_from) {
             reprint_from = doc.reprint_info.reprint_from;
         }
         if (reprint_from != "") {
@@ -164,6 +164,7 @@ Post.remove = function(name, day, title, callback) {
             if (err) {
                 return callback(err);
             }
+            callback(null);
         })
     });
 };
@@ -230,15 +231,17 @@ Post.reprint = function(reprint_from, reprint_to, callback) {
                 date.getHours() + ":" + (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes())
         };
 
-        delete doc._id;//注意要删掉原来的 _id
-
-        doc.name = reprint_to.name;
-        doc.head = reprint_to.head;
-        doc.time = time;
-        doc.title = (doc.title.search(/[转载]/) > -1) ? doc.title : "[转载]" + doc.title;
-        doc.comments = [];
-        doc.reprint_info = {"reprint_from": reprint_from};
-        doc.pv = 0;
+        var newPost = {
+            name: reprint_to.name,
+            head: reprint_to.head,
+            time: time,
+            title: (doc.title.search(/[转载]/) > -1) ? doc.title : "[转载]" + doc.title,
+            comments: [],
+            reprint_info: {"reprint_from": reprint_from},
+            tags: doc.tags,
+            post: doc.post,
+            pv: 0
+        };
 
         //更新被转载的原文档的 reprint_info 内的 reprint_to
         postModel.update({name: reprint_from.name, "time.day": reprint_from.day, title: reprint_from.title}, {
@@ -256,14 +259,30 @@ Post.reprint = function(reprint_from, reprint_to, callback) {
         });
 
         //将转载生成的副本修改后存入数据库，并返回存储后的文档
-        var newPost = new postModel(doc);
-
-        newPost.save(function (err, post) {
+        postModel.create(newPost, function (err) {
             if (err) {
                 return callback(err);
             }
-            callback(null, post[0]);
-        })
+            callback(null, newPost);
+        });
+    });
+};
+
+//留言
+Post.comment = function(name, day, title, comment, callback) {
+    var newComment = {
+        name: name,
+        day: day,
+        title: title,
+        comment: comment
+    };
+
+    //通过用户名、时间及标题查找文档，并把一条留言对象添加到该文档的 comments 数组里
+    postModel.update({name: name, "time.day": day, title: title}, {$push: {comments: newComment}}, function(err){
+        if (err) {
+            return callback(err);
+        }
+        callback(null);
     });
 };
 

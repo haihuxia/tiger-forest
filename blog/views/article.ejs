@@ -7,10 +7,10 @@
 </p>
 <% var flag = 1 %>
 <% if (user && (user.name != post.name)) { %>
-    <% if ((post.reprint_info.reprint_from != undefined) && (user.name == post.reprint_info.reprint_from.name)) { %>
+    <% if (post.reprint_info && (post.reprint_info.reprint_from != undefined) && (user.name == post.reprint_info.reprint_from.name)) { %>
         <% flag = 0 %>
     <% } %>
-    <% if ((post.reprint_info.reprint_to != undefined)) { %>
+    <% if (post.reprint_info && (post.reprint_info.reprint_to != undefined)) { %>
         <% post.reprint_info.reprint_to.forEach(function (reprint_to, index) { %>
             <% if (user.name == reprint_to.name) { %>
                 <% flag = 0 %>
@@ -38,13 +38,13 @@
     阅读：<%= post.pv %> |
     评论：<%= post.comments.length %> |
     转载：
-    <% if (post.reprint_info.reprint_to) { %>
+    <% if (post.reprint_info && post.reprint_info.reprint_to) { %>
         <%= post.reprint_info.reprint_to.length %>
     <% } else { %>
         <%= 0 %>
     <% } %>
 </p>
-<% if (post.reprint_info.reprint_from) { %>
+<% if (post.reprint_info && post.reprint_info.reprint_from) { %>
     <br><a href="/u/<%= post.reprint_info.reprint_from.name %>/<%= post.reprint_info.reprint_from.day %>/<%= post.reprint_info.reprint_from.title %>">原文链接</a>
 <% } %>
 <%- include comment %>

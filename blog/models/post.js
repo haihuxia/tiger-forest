@@ -114,7 +114,7 @@ Post.getOne = function(name, day, title, callback) {
 
 //返回原始发表的内容（markdown 格式）
 Post.edit = function(name, day, title, callback) {
-    postModel.findone({name: name, "time.day": day, title: title}, function(err, doc){
+    postModel.findOne({name: name, "time.day": day, title: title}, function(err, doc){
         if (err) {
             return callback(err);
         }

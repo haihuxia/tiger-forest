@@ -1,9 +1,10 @@
 package com.xhh.demo.bank.exception;
 
-import com.xhh.demo.bank.util.StringUtil;
 import lombok.Getter;
 
 /**
+ * 异常封装类
+ *
  * Created by tiger on 6/19/14.
  */
 public class BankException extends RuntimeException {
@@ -30,8 +31,4 @@ public class BankException extends RuntimeException {
         this.errorCode = errorCode;
     }
 
-    public BankException(String errorCode, String message, String... arg){
-        super(StringUtil.replaceString(message, arg));
-        this.errorCode = errorCode;
-    }
 }

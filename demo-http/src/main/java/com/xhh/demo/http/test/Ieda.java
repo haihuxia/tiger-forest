@@ -8,7 +8,7 @@ import java.util.Random;
 
 import java.util.zip.CRC32;
 
-public class demo1
+public class Ieda
 
 {
 

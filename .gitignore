@@ -1,5 +1,12 @@
+#folder
+target/
+
+#fixed file
+.log
+.DS_Store
 *.class
 *.iml
+*/*.log
 
 target/
 .idea/

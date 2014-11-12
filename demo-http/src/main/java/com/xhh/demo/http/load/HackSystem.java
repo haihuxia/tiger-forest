@@ -53,10 +53,6 @@ public class HackSystem {
         return System.getProperties();
     }
 
-    public static String lineSeparator(){
-        return System.lineSeparator();
-    }
-
     public static void setProperties(Properties props) {
         System.setProperties(props);
     }

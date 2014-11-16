@@ -119,7 +119,7 @@ public class Idea14 {
     }
 
     public static void main(String[] args) {
-        String keyName = "ideazhouli";
+        String keyName = "ideatiger";
         Random r = new Random();
         System.out.println(keyName);
         System.out.println(MakeKey(keyName, 0, r.nextInt(100000)));

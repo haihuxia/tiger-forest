@@ -8,6 +8,9 @@ import java.util.Random;
 
 import java.util.zip.CRC32;
 
+/**
+ * idea13 注册码生成
+ */
 public class Ieda13 {
 
     /**

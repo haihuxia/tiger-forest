@@ -6,6 +6,8 @@ import java.util.Random;
 import java.util.zip.CRC32;
 
 /**
+ * idea14 注册码生成
+ *
  * Created by tiger on 14-11-12.
  */
 public class Idea14 {
@@ -117,7 +119,7 @@ public class Idea14 {
     }
 
     public static void main(String[] args) {
-        String keyName = "idea14";
+        String keyName = "ideazhouli";
         Random r = new Random();
         System.out.println(keyName);
         System.out.println(MakeKey(keyName, 0, r.nextInt(100000)));

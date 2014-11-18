@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhh.demo.dispatch.dal.mapper.BizCmdMapper">
+
+    <resultMap id="bizCmdMap" type="com.xhh.demo.dispatch.dal.models.BizCmdDO">
+        <result column="id"                     property="id"                   jdbcType="DECIMAL"/>
+        <result column="biz_id"                 property="bizId"                jdbcType="VARCHAR" />
+        <result column="biz_type"               property="bizType"              jdbcType="VARCHAR" />
+        <result column="server_ip"              property="serverIP"             jdbcType="VARCHAR" />
+        <result column="fail_reason"            property="failReason"           jdbcType="VARCHAR" />
+        <result column="env_tag"                property="envTag"               jdbcType="VARCHAR" />
+        <result column="is_doing"               property="isDoing"              jdbcType="VARCHAR" />
+        <result column="status"                 property="status"               jdbcType="VARCHAR" />
+        <result column="retry_times"            property="retryTimes"           jdbcType="VARCHAR" />
+        <result column="max_retry_times"        property="maxRetryTimes"        jdbcType="VARCHAR" />
+        <result column="next_exe_time"          property="nextExeTime"          jdbcType="TIMESTAMP" />
+        <result column="enable_start_date"      property="enableStartDate"      jdbcType="TIMESTAMP" />
+        <result column="enable_end_date"        property="enableEndDate"        jdbcType="TIMESTAMP" />
+        <result column="CREATED_AT"             property="createdAt"            jdbcType="TIMESTAMP" />
+        <result column="CREATED_BY"             property="createdBy"            jdbcType="VARCHAR"/>
+        <result column="UPDATED_AT"             property="updatedAt"            jdbcType="TIMESTAMP" />
+        <result column="UPDATED_BY"             property="updatedBy"            jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,
+        BIZ_ID,
+        BIZ_TYPE,
+        SERVER_IP,
+        FAIL_REASON,
+        ENV_TAG,
+        IS_DOING,
+        STATUS,
+        RETRY_TIMES,
+        MAX_RETRY_TIMES,
+        NEXT_EXE_TIME,
+        ENABLE_START_DATE,
+        ENABLE_END_DATE,
+        CREATED_AT,
+        CREATED_BY,
+        UPDATED_AT,
+        UPDATED_BY
+    </sql>
+
+    <!-- 新增dispatch任务 -->
+    <insert id="insert" parameterType="com.xhh.demo.dispatch.dal.models.BizCmdDO">
+        INSERT INTO
+            T_ACC_BIZ_CMD(
+            ID,
+            BIZ_ID,
+            BIZ_TYPE,
+            SERVER_IP,
+            FAIL_REASON,
+            ENV_TAG,
+            IS_DOING,
+            STATUS,
+            RETRY_TIMES,
+            MAX_RETRY_TIMES,
+            NEXT_EXE_TIME,
+            ENABLE_START_DATE,
+            ENABLE_END_DATE,
+            CREATED_AT,
+            CREATED_BY,
+            UPDATED_AT,
+            UPDATED_BY)
+        VALUES(
+            #{id,jdbcType=DECIMAL},
+            #{bizId,jdbcType=VARCHAR},
+            #{bizType,jdbcType=VARCHAR},
+            #{serverIP,jdbcType=VARCHAR},
+            #{failReason,jdbcType=VARCHAR},
+            #{envTag,jdbcType=VARCHAR},
+            #{isDoing,jdbcType=VARCHAR},
+            #{status,jdbcType=VARCHAR},
+            #{retryTimes,jdbcType=VARCHAR},
+            #{maxRetryTimes,jdbcType=VARCHAR},
+            SYSDATE,
+            SYSDATE,
+            SYSDATE + 2/24,
+            SYSDATE,
+            #{createdBy,jdbcType=VARCHAR},
+            SYSDATE,
+            #{updatedBy,jdbcType=VARCHAR})
+    </insert>
+
+    <!-- 更新dispatch任务 -->
+    <update id="update" parameterType="com.xhh.demo.dispatch.dal.models.BizCmdDO">
+        UPDATE
+            T_ACC_BIZ_CMD
+        SET
+            BIZ_ID = #{bizId,jdbcType=VARCHAR},
+            BIZ_TYPE = #{bizType,jdbcType=VARCHAR},
+            SERVER_IP = #{serverIP,jdbcType=VARCHAR},
+            FAIL_REASON = #{failReason,jdbcType=VARCHAR},
+            ENV_TAG = #{envTag,jdbcType=VARCHAR},
+            IS_DOING = #{isDoing,jdbcType=VARCHAR},
+            STATUS = #{status,jdbcType=VARCHAR},
+            RETRY_TIMES = #{retryTimes,jdbcType=VARCHAR},
+            MAX_RETRY_TIMES = #{maxRetryTimes,jdbcType=VARCHAR},
+            NEXT_EXE_TIME = #{nextExeTime,jdbcType=TIMESTAMP},
+            ENABLE_START_DATE = #{enableStartDate,jdbcType=TIMESTAMP},
+            ENABLE_END_DATE = #{enableEndDate,jdbcType=TIMESTAMP},
+            UPDATED_AT=SYSDATE,
+            UPDATED_BY=#{updatedBy,jdbcType=VARCHAR}
+        WHERE
+            ID = #{id,jdbcType=VARCHAR}
+    </update>
+
+    <!-- 查询需要执行的dispatch任务 -->
+    <select id="selectToDoCmdList" resultMap="bizCmdMap">
+        SELECT
+            <include refid="Base_Column_List" />
+        FROM
+            T_ACC_BIZ_CMD
+        WHERE
+            (STATUS = 'I' or STATUS = 'W')
+        AND
+            IS_DOING = 'n'
+            <![CDATA[
+            AND
+                NEXT_EXE_TIME <= SYSDATE
+            AND
+                ENABLE_START_DATE <= SYSDATE
+            AND
+                ENABLE_END_DATE > SYSDATE
+            AND
+                BIZ_TYPE = #{bizType,jdbcType=VARCHAR}
+            AND
+                ENV_TAG = #{envTag,jdbcType=VARCHAR}
+            AND
+                ROWNUM <= #{cmdNum}
+            ]]>
+        ORDER BY ID
+    </select>
+
+    <!-- 删除dispatch任务 -->
+    <delete id="deleteById">
+        DELETE FROM
+            T_ACC_BIZ_CMD
+        WHERE
+            ID = #{id,jdbcType=VARCHAR}
+    </delete>
+
+    <!-- 根据biz_id，biz_type查询命令集合 -->
+    <select id="selectByBizIdAndType" resultMap="bizCmdMap">
+        SELECT
+            <include refid="Base_Column_List" />
+        FROM
+            T_ACC_BIZ_CMD
+        WHERE
+            biz_id = #{bizId,jdbcType=VARCHAR}
+        AND
+            biz_type = #{bizType,jdbcType=VARCHAR}
+    </select>
+
+    <!-- 激活dispatch任务 -->
+    <update id="reactiveCommandsBeforeDate">
+        UPDATE
+            T_ACC_BIZ_CMD
+        SET
+            is_doing = 'n',
+            UPDATED_AT = SYSDATE
+        WHERE
+            is_doing = 'y'
+        AND
+            UPDATED_AT <![CDATA[ < ]]> #{value}
+    </update>
+
+</mapper>

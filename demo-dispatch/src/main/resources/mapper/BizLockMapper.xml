@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xhh.demo.dispatch.dal.mapper.BizLockMapper">
+
+    <resultMap id="BaseResultMap" type="com.xhh.demo.dispatch.dal.models.BizLockDO">
+        <result column="ID"             property="id"           jdbcType="DECIMAL"/>
+        <result column="LOCK_NAME"      property="lockName"     jdbcType="VARCHAR" />
+        <result column="STATUS"         property="status"       jdbcType="VARCHAR" />
+        <result column="CREATED_AT"     property="createdAt"    jdbcType="TIMESTAMP" />
+        <result column="CREATED_BY"     property="createdBy"    jdbcType="VARCHAR"/>
+        <result column="UPDATED_AT"     property="updatedAt"    jdbcType="TIMESTAMP" />
+        <result column="UPDATED_BY"     property="updatedBy"    jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID,
+        LOCK_NAME,
+        STATUS,
+        CREATED_AT,
+        CREATED_BY,
+        UPDATED_AT,
+        UPDATED_BY
+    </sql>
+
+    <!-- 添加锁 -->
+    <select id="lock" resultMap="BaseResultMap"  parameterType="java.util.HashMap">
+        SELECT
+            <include refid="Base_Column_List" />
+        FROM
+            T_ACC_BIZ_LOCK AC
+        WHERE
+            AC.LOCK_NAME = #{lockName,jdbcType=VARCHAR}
+        AND
+            AC.STATUS = #{status,jdbcType=VARCHAR}
+        FOR UPDATE NOWAIT
+    </select>
+
+    <!-- 释放锁 -->
+    <select id="releaseLock" resultType="java.lang.Integer">
+        UPDATE
+            T_ACC_BIZ_LOCK
+        SET
+            UPDATED_AT = SYSDATE,
+            STATUS = #{status,jdbcType=VARCHAR},
+            UPDATED_BY = #{updateBy,jdbcType=VARCHAR}
+        WHERE
+            LOCK_NAME = #{lockName,jdbcType=VARCHAR}
+    </select>
+
+</mapper>

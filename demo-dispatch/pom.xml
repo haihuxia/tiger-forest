@@ -8,9 +8,19 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>demo-bank</artifactId>
+    <artifactId>demo-dispatch</artifactId>
     <packaging>jar</packaging>
-    <name>Demo Bank</name>
+    <name>Demo Dispatch</name>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
 
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>

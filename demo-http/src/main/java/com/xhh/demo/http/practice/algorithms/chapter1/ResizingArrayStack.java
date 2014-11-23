@@ -12,14 +12,28 @@ import java.util.Iterator;
  */
 public class ResizingArrayStack<Item> {
 
+    /**
+     * 初始化数组
+     */
     private Item[] a = (Item[])new Object[10];
 
+    /**
+     * 栈大小
+     */
     private int n = 0;
 
+    /**
+     * 判断是否为空
+     * @return 是否为空
+     */
     public boolean isEmpty() {
         return n == 0;
     }
 
+    /**
+     * 栈的长度
+     * @return 长度
+     */
     public int size() {
         return n;
     }
@@ -34,6 +48,10 @@ public class ResizingArrayStack<Item> {
         a = temp;
     }
 
+    /**
+     * 添加一个 Item
+     * @param item 参数 Item
+     */
     public void push(Item item) {
         if (n == a.length) {
             resize(2 * a.length);
@@ -41,6 +59,10 @@ public class ResizingArrayStack<Item> {
         a[n++] = item;
     }
 
+    /**
+     * 从栈顶消耗一个 Item
+     * @return 消耗的 Item
+     */
     public Item pop() {
         Item item = a[--n];
         //避免对象游离
@@ -51,6 +73,10 @@ public class ResizingArrayStack<Item> {
         return item;
     }
 
+    /**
+     * 实现迭代
+     * @return 迭代的实现
+     */
     public Iterator<Item> iterator() {
         return new ReverseArrayIterator();
     }
@@ -60,18 +86,33 @@ public class ResizingArrayStack<Item> {
      */
     private class ReverseArrayIterator implements Iterator<Item> {
 
+        /**
+         * 长度
+         */
         private  int i = n;
 
+        /**
+         * 是否存在下一个 Item
+         * @return 是否存在
+         */
         @Override
         public boolean hasNext() {
             return i > 0;
         }
 
+        /**
+         * 获取下一个 Item
+         * @return 下一个 Item
+         */
         @Override
         public Item next() {
             return a[--i];
         }
 
+        /**
+         * 移除
+         * 不使用该实现
+         */
         @Override
         public void remove() {
 

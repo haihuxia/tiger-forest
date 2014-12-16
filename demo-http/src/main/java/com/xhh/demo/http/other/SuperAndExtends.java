@@ -1,16 +1,11 @@
-package com.xhh.demo.http.test;
+package com.xhh.demo.http.other;
 
-import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
 /**
  * 泛型通配符使用
- *
- * <ul>
- * <li>方法列表</li>
- * </ul>
  *
  * @author tiger
  * @version 1.0.0 createTime: 14-12-15 下午7:04

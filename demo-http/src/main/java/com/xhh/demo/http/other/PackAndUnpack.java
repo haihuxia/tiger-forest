@@ -1,4 +1,4 @@
-package com.xhh.demo.http.test;
+package com.xhh.demo.http.other;
 
 /**
  * 自动装箱

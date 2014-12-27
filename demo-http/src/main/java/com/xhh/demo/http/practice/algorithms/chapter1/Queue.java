@@ -3,26 +3,29 @@ package com.xhh.demo.http.practice.algorithms.chapter1;
 import java.util.Iterator;
 
 /**
- * 下压堆栈（链表实现）
+ * 先进先出队列
  *
- * 优点：可以处理任意类型的数据，所需的空间总是和集合的大小成正比，操作所需的时间总是和集合的大小无关
- *
- * Created by tiger on 14/11/23.
+ * Created by tiger on 14/11/29.
  */
-public class Stack<Item> {
+public class Queue<Item> {
 
     /**
-     * 栈顶结点
+     * 最早添加的结点
      */
     private Node first;
 
     /**
-     * 长度
+     * 最近添加的结点
+     */
+    private Node last;
+
+    /**
+     * 元素数量
      */
     private int n;
 
     /**
-     * 结点对象
+     * 结点嵌套类
      */
     private class Node {
 
@@ -34,41 +37,49 @@ public class Stack<Item> {
     }
 
     /**
-     * 判断栈是否为空
+     * 判读队列是否为空
+     * 同样可以使用 n == 0
      * @return 是否为空
      */
     public boolean isEmpty() {
-        //同样可以使用 n == 0 来判断
         return first == null;
     }
 
     /**
-     * 栈长度
-     * @return 长度
+     * 获取队列长度
+     * @return 队列长度
      */
     public int size() {
         return n;
     }
 
     /**
-     * 向栈顶添加 Item
+     * 添加元素到队列尾
      * @param item 参数 Item
      */
-    public void push(Item item) {
-        Node oldFirst = first;
-        first = new Node();
-        first.item = item;
-        first.next = oldFirst;
+    public void enqueue(Item item) {
+        Node oldLast = last;
+        last = new Node();
+        last.item = item;
+        last.next = null;
+        if (isEmpty()) {
+           first = last;
+        } else {
+            oldLast.next = last;
+        }
         n++;
     }
 
     /**
-     * 从栈顶消耗 Item
-     * @return 消耗的 Item
+     * 从队列头删除元素
+     * @return
      */
-    public Item pop() {
+    public Item dequeue() {
         Item item = first.item;
         first = first.next;
+        if (isEmpty()) {
+            last = null;
+        }
         n--;
         return item;
     }
@@ -78,13 +89,13 @@ public class Stack<Item> {
      * @return 迭代的实现
      */
     public Iterator<Item> iterator() {
-        return new StackIterator();
+        return new QueueIterator();
     }
 
     /**
      * 迭代
      */
-    private class StackIterator implements Iterator<Item> {
+    private class QueueIterator implements Iterator<Item> {
 
         /**
          * 开始结点
@@ -118,17 +129,6 @@ public class Stack<Item> {
         @Override
         public void remove() {
 
-        }
-    }
-
-    public static void main(String[] args) {
-        Stack<String> stack = new Stack<String>();
-        stack.push("苹果");
-        stack.push("西瓜");
-        stack.push("柚子");
-        Iterator<String> i = stack.iterator();
-        while (i.hasNext()) {
-            System.out.println(i.next());
         }
     }
 }

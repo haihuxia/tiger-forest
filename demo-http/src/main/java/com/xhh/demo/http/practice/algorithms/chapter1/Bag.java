@@ -3,16 +3,14 @@ package com.xhh.demo.http.practice.algorithms.chapter1;
 import java.util.Iterator;
 
 /**
- * 下压堆栈（链表实现）
+ * 背包
  *
- * 优点：可以处理任意类型的数据，所需的空间总是和集合的大小成正比，操作所需的时间总是和集合的大小无关
- *
- * Created by tiger on 14/11/23.
+ * Created by tiger on 14/11/29.
  */
-public class Stack<Item> {
+public class Bag<Item> {
 
     /**
-     * 栈顶结点
+     * 背包首结点
      */
     private Node first;
 
@@ -34,7 +32,7 @@ public class Stack<Item> {
     }
 
     /**
-     * 判断栈是否为空
+     * 判断背包是否为空
      * @return 是否为空
      */
     public boolean isEmpty() {
@@ -51,10 +49,10 @@ public class Stack<Item> {
     }
 
     /**
-     * 向栈顶添加 Item
+     * 向背包首添加 Item
      * @param item 参数 Item
      */
-    public void push(Item item) {
+    public void add(Item item) {
         Node oldFirst = first;
         first = new Node();
         first.item = item;
@@ -63,28 +61,17 @@ public class Stack<Item> {
     }
 
     /**
-     * 从栈顶消耗 Item
-     * @return 消耗的 Item
-     */
-    public Item pop() {
-        Item item = first.item;
-        first = first.next;
-        n--;
-        return item;
-    }
-
-    /**
      * 实现迭代
      * @return 迭代的实现
      */
     public Iterator<Item> iterator() {
-        return new StackIterator();
+        return new BagIterator();
     }
 
     /**
      * 迭代
      */
-    private class StackIterator implements Iterator<Item> {
+    private class BagIterator implements Iterator<Item> {
 
         /**
          * 开始结点
@@ -113,22 +100,10 @@ public class Stack<Item> {
 
         /**
          * 移除
-         * 不使用该实现
          */
         @Override
         public void remove() {
 
-        }
-    }
-
-    public static void main(String[] args) {
-        Stack<String> stack = new Stack<String>();
-        stack.push("苹果");
-        stack.push("西瓜");
-        stack.push("柚子");
-        Iterator<String> i = stack.iterator();
-        while (i.hasNext()) {
-            System.out.println(i.next());
         }
     }
 }

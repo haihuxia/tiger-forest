@@ -1,4 +1,4 @@
-package com.xhh.demo.http.test;
+package com.xhh.demo.http.other;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -14,7 +14,7 @@ import static org.mockito.Mockito.doCallRealMethod;
 import static org.mockito.Mockito.doReturn;
 
 /**
- * mock测试
+ * mock 测试
  *
  * <p>spinrg + mock 测试的例子
  *
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.doReturn;
  * @version 1.0.0 createTime: 14/12/27 下午9:03
  * @since 1.6
  */
-public class MockTest extends BaseTest {
+public class MockReflectionTest extends BaseTest {
 
     @Mock
     private OrderCreate orderCreate;

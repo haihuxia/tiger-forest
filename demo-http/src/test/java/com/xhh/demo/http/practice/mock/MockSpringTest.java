@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import static org.mockito.Mockito.*;
 
@@ -20,6 +22,15 @@ import static org.mockito.Mockito.*;
  */
 public class MockSpringTest extends BaseSpringTest {
 
+    @Autowired
+    private Order order;
+
+    @Autowired
+    private OrderBefore orderBefore;
+
+    @Autowired
+    private OrderStart orderStart;
+
     @InjectMocks
     private OrderCreate orderCreate = mock(OrderCreate.class);
 
@@ -29,6 +40,7 @@ public class MockSpringTest extends BaseSpringTest {
     @Before
     public void initMocks() throws Exception {
         MockitoAnnotations.initMocks(this);
+        ReflectionTestUtils.setField(AopTargetUtils.getTarget(orderStart), "orderCreate", orderCreate);
         doReturn(11).when(orderCreate).getAmt();
         doReturn("success").when(orderHelperMock).resolve();
         doCallRealMethod().when(orderCreate).create();
@@ -37,6 +49,7 @@ public class MockSpringTest extends BaseSpringTest {
     @Test
     public void create() {
         System.out.println("start mock...");
-        orderCreate.create();
+        //orderBefore.before();
+        order.order();
     }
 }

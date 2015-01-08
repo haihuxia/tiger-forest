@@ -26,9 +26,6 @@ public class MockSpringTest extends BaseSpringTest {
     private Order order;
 
     @Autowired
-    private OrderBefore orderBefore;
-
-    @Autowired
     private OrderStart orderStart;
 
     @InjectMocks
@@ -49,7 +46,6 @@ public class MockSpringTest extends BaseSpringTest {
     @Test
     public void create() {
         System.out.println("start mock...");
-        //orderBefore.before();
         order.order();
     }
 }

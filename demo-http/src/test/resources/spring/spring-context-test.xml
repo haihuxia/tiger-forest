@@ -24,8 +24,8 @@
     <!--<bean id="orderCreate" class="com.xhh.demo.http.practice.mock.OrderCreate"></bean>-->
     <!--<bean id="orderHelper" class="com.xhh.demo.http.practice.mock.OrderHelper"></bean>-->
 
-    <bean id="orderHelperMock"  class="org.mockito.Mockito" factory-method="mock">
+    <!--<bean id="orderHelperMock"  class="org.mockito.Mockito" factory-method="mock">
         <constructor-arg value="com.xhh.demo.http.practice.mock.OrderHelper"></constructor-arg>
-    </bean>
+    </bean>-->
 
 </beans>

@@ -1,13 +1,17 @@
 package com.xhh.demo.http.practice.factory;
 
 /**
- * Created by tiger on 2014/4/3.
+ * CarFactory
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-3
+ * @since 1.6
  */
 public class CarFactory {
 
     public static Car createCar (Class<? extends Car> c) {
         try {
-            return (Car)c.newInstance();
+            return c.newInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }

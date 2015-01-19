@@ -5,15 +5,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
- * 类注释
- * <p/>
- * <p>简单描述类的内容
+ * BaseSpringTest
  *
  * @author tiger
  * @version 1.0.0 createTime: 15-1-8 下午5:09
  * @since 1.6
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:spring/spring-context-test.xml")
+@ContextConfiguration(locations = "classpath:spring/spring-context.xml")
 public class BaseSpringTest {
 }

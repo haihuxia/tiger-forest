@@ -5,7 +5,11 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 /**
- * Created by tiger on 14-6-12.
+ * 测试准备数据
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-12
+ * @since 1.6
  */
 public class Fruits {
 

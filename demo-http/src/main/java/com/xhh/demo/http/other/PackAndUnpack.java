@@ -3,9 +3,11 @@ package com.xhh.demo.http.other;
 /**
  * 自动装箱
  *
- * 包装类的“==”运算在没有遇到算术运算的情况下不会自动拆箱，而它们的 equals() 方法不会处理数据转换的类型
+ * <P>包装类的“==”运算在没有遇到算术运算的情况下不会自动拆箱，而它们的 equals() 方法不会处理数据转换的类型
  *
- * Created by tiger on 14/11/1.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-1
+ * @since 1.6
  */
 public class PackAndUnpack {
 

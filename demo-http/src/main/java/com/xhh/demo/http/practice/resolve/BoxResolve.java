@@ -5,7 +5,11 @@ import com.xhh.demo.http.practice.resolve.model.ChalkBox;
 import com.xhh.demo.http.practice.resolve.model.PencilBox;
 
 /**
- * Created by tiger on 14-4-24.
+ * BoxResolve
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-24
+ * @since 1.6
  */
 public class BoxResolve {
 

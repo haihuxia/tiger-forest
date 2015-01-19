@@ -3,7 +3,9 @@ package com.xhh.demo.http.practice.algorithms.chapter1;
 /**
  * union-find 算法的实现（加权 quick-union）
  *
- * Created by tiger on 14/11/30.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-30
+ * @since 1.6
  */
 public class WeightedQuickUnionUF {
 

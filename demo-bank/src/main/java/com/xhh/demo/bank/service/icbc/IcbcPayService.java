@@ -9,7 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 工行支付实现类
  *
- * Created by tiger on 6/18/14.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-18
+ * @since 1.6
  */
 @Slf4j
 public class IcbcPayService extends BaseBankPayService {

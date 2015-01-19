@@ -3,7 +3,9 @@ package com.xhh.demo.http.practice.single;
 /**
  * 使用双重锁判定可以大幅降低锁的征用
  *
- * Created by tiger on 14-11-11.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-11
+ * @since 1.6
  */
 public class ObjInstance {
 

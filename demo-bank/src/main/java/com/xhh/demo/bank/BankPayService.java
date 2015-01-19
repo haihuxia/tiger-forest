@@ -6,30 +6,33 @@ import com.xhh.demo.bank.model.BankResponse;
 
 /**
  * 银行支付基本接口
- * 提供功能：支付、退款、查询
  *
- * Created by tiger on 6/18/14.
+ * <p>提供功能：支付、退款、查询
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-18
+ * @since 1.6
  */
 public interface BankPayService {
 
     /**
      * 支付接口
-     * @param bankRequest
-     * @return
+     * @param bankRequest 请求参数
+     * @return 响应
      */
     Response<BankResponse> pay(BankRequest bankRequest);
 
     /**
      * 退款接口
-     * @param bankRequest
-     * @return
+     * @param bankRequest 请求参数
+     * @return 响应
      */
     Response<BankResponse> refund(BankRequest bankRequest);
 
     /**
      * 查询接口
-     * @param bankRequest
-     * @return
+     * @param bankRequest 请求参数
+     * @return 响应
      */
     Response<BankResponse> query(BankRequest bankRequest);
 }

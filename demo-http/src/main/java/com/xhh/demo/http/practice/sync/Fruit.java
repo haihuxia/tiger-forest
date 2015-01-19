@@ -5,7 +5,11 @@ import com.xhh.demo.http.core.Fruits;
 import java.util.List;
 
 /**
- * Created by tiger on 14-6-12.
+ * Fruit
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-12
+ * @since 1.6
  */
 public class Fruit {
 

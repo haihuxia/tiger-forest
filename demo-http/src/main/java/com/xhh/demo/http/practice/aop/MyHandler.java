@@ -5,7 +5,11 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 /**
- * Created by tiger on 2014/4/9.
+ * MyHandler
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-9
+ * @since 1.6
  */
 public class MyHandler implements InvocationHandler {
 

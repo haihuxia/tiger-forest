@@ -3,7 +3,11 @@ package com.xhh.demo.http.practice;
 import java.util.Random;
 
 /**
- * Created by tiger on 14-3-24.
+ * DynamicConst
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-3-24
+ * @since 1.6
  */
 public class DynamicConst {
 

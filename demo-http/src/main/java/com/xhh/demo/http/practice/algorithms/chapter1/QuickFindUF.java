@@ -3,9 +3,11 @@ package com.xhh.demo.http.practice.algorithms.chapter1;
 /**
  * quick-find
  *
- * quick-find 算法的运行时间对于最终只能得到少数连通分量的一般应用是平方级别的
+ * <P>quick-find 算法的运行时间对于最终只能得到少数连通分量的一般应用是平方级别的
  *
- * Created by tiger on 14/11/30.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-23
+ * @since 1.6
  */
 public class QuickFindUF {
 

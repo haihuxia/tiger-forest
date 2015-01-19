@@ -1,6 +1,6 @@
 package com.xhh.demo.http.practice.mock;
 
-import com.xhh.demo.http.BaseTest;
+import com.xhh.demo.http.BaseSpringTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.doReturn;
  * @version 1.0.0 createTime: 14/12/27 下午9:03
  * @since 1.6
  */
-public class MockReflectionTest extends BaseTest {
+public class MockReflectionTest extends BaseSpringTest {
 
     @Mock
     private OrderCreate orderCreate;

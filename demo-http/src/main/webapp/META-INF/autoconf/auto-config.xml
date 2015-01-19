@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!-- 日志配置 -->
+    <group name="logger">
+        <property name="logger.logRoot" defaultValue="/home/tiger/project/logs" description="日志根目录"/>
+        <property name="logger.logLevel" defaultValue="INFO" description="日志打印级别"/>
+        <property name="logger.lib.logLevel" defaultValue="INFO" description=" 工具包日志打印级别"/>
+        <property name="logger.info.appender" defaultValue="logInfoFile" description="info 日志打印输出"/>
+        <property name="logger.error.appender" defaultValue="logErrorFile" description="error 日志打印输出"/>
+    </group>
+
+    <!-- 文件生成配置 -->
+    <script>
+        <generate template="config.properties.vm" destfile="WEB-INF/classes/properties/config.properties"
+                  charset="UTF-8"/>
+        <generate template="logback.xml.vm" destfile="WEB-INF/classes/logback.xml"/>
+    </script>
+</config>

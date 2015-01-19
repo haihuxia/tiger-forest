@@ -1,7 +1,11 @@
 package com.xhh.demo.http.practice.annotation;
 
 /**
- * Created by tiger on 14-6-13.
+ * FruitName 注解
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-13
+ * @since 1.6
  */
 public class Orange {
 

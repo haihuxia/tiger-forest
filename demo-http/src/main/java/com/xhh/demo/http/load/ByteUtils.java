@@ -3,7 +3,9 @@ package com.xhh.demo.http.load;
 /**
  * Bytes 数组处理工具
  *
- * Created by tiger on 14/11/1.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-1
+ * @since 1.6
  */
 public class ByteUtils {
 

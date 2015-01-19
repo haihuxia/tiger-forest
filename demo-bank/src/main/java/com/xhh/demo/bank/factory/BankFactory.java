@@ -9,7 +9,9 @@ import lombok.extern.slf4j.Slf4j;
 /**
  * 银行实现工厂入口
  *
- * Created by tiger on 6/18/14.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-18
+ * @since 1.6
  */
 @Slf4j
 public class BankFactory {
@@ -17,8 +19,8 @@ public class BankFactory {
     /**
      * 根据银行编码生成对应的实现类
      *
-     * @param bankCode
-     * @return
+     * @param bankCode 银行编码
+     * @return BaseBankPayService
      */
     public static BaseBankPayService create(String bankCode) {
         return BankEnumFactory.valueOf(bankCode.toUpperCase()).create();
@@ -27,7 +29,7 @@ public class BankFactory {
     /**
      * 模拟根据银行编码查询实现类并调用银行pay方法
      *
-     * @param bankRequest
+     * @param bankRequest BankRequest
      */
     public void pay(BankRequest bankRequest) {
         BaseBankPayService bankPayService;

@@ -5,8 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * tiger
- * Date: 2013-07-23
+ * Bootstrap
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 13-7-23
+ * @since 1.6
  */
 @Slf4j
 public class Bootstrap extends AbstractIdleService {

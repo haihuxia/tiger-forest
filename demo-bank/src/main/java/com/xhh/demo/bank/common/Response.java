@@ -7,7 +7,9 @@ import java.io.Serializable;
 /**
  * 银行处理响应对象
  *
- * Created by tiger on 6/18/14.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-18
+ * @since 1.6
  */
 @ToString
 public class Response<T> implements Serializable {

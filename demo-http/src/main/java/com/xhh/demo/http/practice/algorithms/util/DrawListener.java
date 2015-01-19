@@ -1,7 +1,11 @@
 package com.xhh.demo.http.practice.algorithms.util;
 
 /**
- * Created by tiger on 2014/3/27.
+ * DrawListener
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-3-27
+ * @since 1.6
  */
 public interface DrawListener {
 

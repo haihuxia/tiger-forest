@@ -10,10 +10,13 @@ import org.apache.hadoop.mapred.Reporter;
 import java.io.IOException;
 
 /**
- * Created by tiger on 9/3/14.
- *
  * 处理数据 Mapper
  *
+ * <p>仅传递前5个数字给 Reducer 处理
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-9-3
+ * @since 1.6
  */
 public class MaxNumberMapper extends MapReduceBase implements Mapper<Object, Text, LongWritable, LongWritable> {
 
@@ -24,11 +27,11 @@ public class MaxNumberMapper extends MapReduceBase implements Mapper<Object, Tex
             LongWritable> textIntWritableOutputCollector,
                     Reporter reporter) throws IOException {
         //过滤无效数据
-        if(null == text || text.equals("")){
+        if(null == text || text.toString().equals("")){
             return;
         }
         String textStr = text.toString();
-        //读取 CSV 文件中的数据可能会带一些特殊符号，替换处理 TODO 该处理有待优化
+        //读取 CSV 文件中的数据可能会带一些特殊符号，替换处理
         textStr = textStr.trim().replaceAll(" ", "").replaceAll("\"", "");
 
         //转换成 LongWritable

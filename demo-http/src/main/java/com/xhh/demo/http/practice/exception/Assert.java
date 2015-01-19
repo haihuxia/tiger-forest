@@ -1,7 +1,11 @@
 package com.xhh.demo.http.practice.exception;
 
 /**
- * Created by tiger on 14-6-17.
+ * Assert
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-17
+ * @since 1.6
  */
 public class Assert {
 

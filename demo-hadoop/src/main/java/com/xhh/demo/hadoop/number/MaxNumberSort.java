@@ -4,10 +4,11 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.WritableComparable;
 
 /**
- * Created by tiger on 9/3/14.
- *
  * 重写 LongWritable.Comparator 的 compare 方法，使数据降序排列
  *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-9-3
+ * @since 1.6
  */
 public class MaxNumberSort extends LongWritable.Comparator {
 

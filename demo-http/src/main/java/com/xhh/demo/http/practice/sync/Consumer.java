@@ -3,7 +3,11 @@ package com.xhh.demo.http.practice.sync;
 import java.util.Random;
 
 /**
- * Created by tiger on 14-6-13.
+ * Consumer
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-13
+ * @since 1.6
  */
 public class Consumer implements Runnable {
     private Drop drop;

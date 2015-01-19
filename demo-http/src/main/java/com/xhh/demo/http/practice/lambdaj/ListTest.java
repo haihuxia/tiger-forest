@@ -9,9 +9,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by tiger on 2014/4/3.
+ * ListTest
  *
- * Trove 每个集合乘以一个值
+ * <p>Trove 每个集合乘以一个值
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-3
+ * @since 1.6
  */
 public class ListTest {
 

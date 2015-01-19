@@ -5,7 +5,9 @@ import java.util.Iterator;
 /**
  * 先进先出队列
  *
- * Created by tiger on 14/11/29.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-23
+ * @since 1.6
  */
 public class Queue<Item> {
 

@@ -6,7 +6,11 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Created by tiger on 2014/4/4.
+ * LambdaFeature
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-4
+ * @since 1.6
  */
 public class LambdaFeature {
 

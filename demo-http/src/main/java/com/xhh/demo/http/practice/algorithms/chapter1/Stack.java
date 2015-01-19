@@ -5,9 +5,11 @@ import java.util.Iterator;
 /**
  * 下压堆栈（链表实现）
  *
- * 优点：可以处理任意类型的数据，所需的空间总是和集合的大小成正比，操作所需的时间总是和集合的大小无关
+ * <p>优点：可以处理任意类型的数据，所需的空间总是和集合的大小成正比，操作所需的时间总是和集合的大小无关
  *
- * Created by tiger on 14/11/23.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-23
+ * @since 1.6
  */
 public class Stack<Item> {
 

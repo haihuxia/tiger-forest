@@ -1,0 +1,6 @@
+#logger
+logger.logLevel=${logger_logLevel}
+logger.lib.logLevel=${logger_lib_logLevel}
+logger.logRoot=${logger_logRoot}
+logger.info.appender=${logger_info_appender}
+logger.error.appender=${logger_error_appender}

@@ -1,7 +1,11 @@
 package com.xhh.demo.http.practice.aop.spring;
 
 /**
- * Created by tiger on 2014/4/9.
+ * BookService
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-19
+ * @since 1.6
  */
 public interface BookService {
 

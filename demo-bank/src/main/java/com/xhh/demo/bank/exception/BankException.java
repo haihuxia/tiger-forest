@@ -5,7 +5,9 @@ import lombok.Getter;
 /**
  * 异常封装类
  *
- * Created by tiger on 6/19/14.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-19
+ * @since 1.6
  */
 public class BankException extends RuntimeException {
 

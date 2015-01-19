@@ -5,7 +5,11 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by tiger on 2014/4/9.
+ * aop 测试
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-9
+ * @since 1.6
  */
 @Component
 @Aspect

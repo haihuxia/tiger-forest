@@ -1,7 +1,11 @@
 package com.xhh.demo.http.practice.factory;
 
 /**
- * Created by tiger on 2014/4/3.
+ * BenzCar
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-3
+ * @since 1.6
  */
 public class BenzCar implements Car {
 

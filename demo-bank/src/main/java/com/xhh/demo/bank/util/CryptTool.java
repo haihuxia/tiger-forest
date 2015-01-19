@@ -6,8 +6,13 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 /**
- * CryptTool 封装了一些加密工具方法, 包括 3DES, MD5 等.
+ * CryptTool
  *
+ * <p>CryptTool 封装了一些加密工具方法, 包括 3DES, MD5 等.
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-18
+ * @since 1.6
  */
 public class CryptTool {
 

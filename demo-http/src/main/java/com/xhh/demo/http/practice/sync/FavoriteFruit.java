@@ -1,7 +1,11 @@
 package com.xhh.demo.http.practice.sync;
 
 /**
- * Created by tiger on 14-6-12.
+ * FavoriteFruit
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-12
+ * @since 1.6
  */
 public class FavoriteFruit{
 

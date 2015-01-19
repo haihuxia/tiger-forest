@@ -7,9 +7,12 @@ import java.util.Properties;
 
 /**
  * 为 JavaClass 劫持 java.lang.System 提供支持
- * 除了 out 和 err 外，其余的都直接转发给 System 处理
  *
- * Created by tiger on 14/11/1.
+ * <p>除了 out 和 err 外，其余的都直接转发给 System 处理</p>
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-1
+ * @since 1.6
  */
 public class HackSystem {
 

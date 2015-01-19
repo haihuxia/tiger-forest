@@ -5,7 +5,9 @@ import lombok.Data;
 /**
  * 银行接口返回参数
  *
- * Created by tiger on 6/18/14.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-18
+ * @since 1.6
  */
 @Data
 public class BankResponse {

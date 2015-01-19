@@ -6,7 +6,11 @@ import java.util.Map;
 import java.util.concurrent.*;
 
 /**
- * Created by tiger on 14-5-25.
+ * ConcurrentNAV
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-5-25
+ * @since 1.6
  */
 public class ConcurrentNAV {
 

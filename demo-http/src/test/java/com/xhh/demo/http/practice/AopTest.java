@@ -1,7 +1,6 @@
 package com.xhh.demo.http.practice;
 
-import com.xhh.demo.http.BaseTest;
-import com.xhh.demo.http.practice.aop.spring.BookService;
+import com.xhh.demo.http.BaseSpringTest;
 import com.xhh.demo.http.practice.aop.spring.BookServiceImpl;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,10 +10,14 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- * Created by tiger on 2014/4/9.
+ * AopTest
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-9
+ * @since 1.6
  */
 @Slf4j
-public class AopTest extends BaseTest {
+public class AopTest extends BaseSpringTest {
 
     @Autowired
     private BookServiceImpl bookService;

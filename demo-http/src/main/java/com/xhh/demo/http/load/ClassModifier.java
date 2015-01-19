@@ -3,7 +3,9 @@ package com.xhh.demo.http.load;
 /**
  * 修改 Class 文件，暂时只提供修改常量池常量的功能
  *
- * Created by tiger on 14/11/1.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-1
+ * @since 1.6
  */
 public class ClassModifier {
 

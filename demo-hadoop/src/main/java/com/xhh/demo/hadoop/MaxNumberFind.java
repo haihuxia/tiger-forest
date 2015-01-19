@@ -17,15 +17,16 @@ import org.apache.hadoop.mapred.TextOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
 
 /**
- * Created by tiger on 9/2/14.
- *
  * 从 HDFS 中的文件中查找最大的5个数字
  *
- * 思路：
+ * <p>思路：
  * 1.给文件中每个数字添加编号，从1开始，以编号为key，文件中数字为value
  * 2.改变 Hadoop 默认升序排序规则，改为降序
  * 3.输出前5个数字
  *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-9-3
+ * @since 1.6
  */
 public class MaxNumberFind {
 

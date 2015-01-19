@@ -7,9 +7,11 @@ import lombok.Setter;
 /**
  * 银行处理响应码
  *
- * 检查校验类响应吗
+ * <p>检查校验类响应吗
  *
- * Created by tiger on 6/19/14.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-19
+ * @since 1.6
  */
 @Getter
 @AllArgsConstructor

@@ -14,7 +14,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by tiger on 14-6-4.
+ * GuavaCollections
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-14 下午2:46
+ * @since 1.6
  */
 @Service
 public class GuavaCollections {

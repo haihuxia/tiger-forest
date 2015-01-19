@@ -4,11 +4,14 @@ import java.util.Iterator;
 
 /**
  * 下压（LIFO）栈
- * 能够动态调整数组大小的实现
  *
- * 缺点：push 和 pop 操作会调整数据的大小，这项操作的耗时和栈大小成正比
+ * <p>能够动态调整数组大小的实现
  *
- * Created by tiger on 14/11/23.
+ * <p>缺点：push 和 pop 操作会调整数据的大小，这项操作的耗时和栈大小成正比
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-23
+ * @since 1.6
  */
 public class ResizingArrayStack<Item> {
 

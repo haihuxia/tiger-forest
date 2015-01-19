@@ -10,9 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * 银行支付基本接口抽象类
- * 各银行支付接口实现的统一父类
  *
- * Created by tiger on 6/18/14.
+ * <p>各银行支付接口实现的统一父类
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-18
+ * @since 1.6
  */
 @Slf4j
 public class BaseBankPayService implements BankPayService {

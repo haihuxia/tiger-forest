@@ -10,10 +10,11 @@ import java.io.IOException;
 import java.util.Iterator;
 
 /**
- * Created by tiger on 9/3/14.
- *
  * 处理数据 Reducer
  *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-9-3
+ * @since 1.6
  */
 public class MaxNumberReducer extends MapReduceBase implements Reducer<LongWritable, LongWritable, LongWritable, LongWritable> {
 

@@ -9,17 +9,19 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by tiger on 2014/4/13.
+ * Gson 测试 demo
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-13
+ * @since 1.6
  */
 public class GsonTest {
 
     private static Map<String, String> parseData(String data){
         GsonBuilder gb = new GsonBuilder();
         Gson g = gb.create();
-        Map<String, String> map = g.fromJson(data, new TypeToken<Map<String, String>>() {}.getType());
-        return map;
+        return g.fromJson(data, new TypeToken<Map<String, String>>() {}.getType());
     }
-
 
     public static void main(String[] args) {
         String a = "#10#20#30#50#100#200#300#500#";

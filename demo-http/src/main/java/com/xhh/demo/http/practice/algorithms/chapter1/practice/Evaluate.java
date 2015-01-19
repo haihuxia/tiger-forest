@@ -7,7 +7,9 @@ import java.util.Stack;
 /**
  * 双栈算术表达式求值算法
  *
- * Created by tiger on 14/11/23.
+ * @author tiger
+ * @version 1.0.0 createTime: 14-11-23
+ * @since 1.6
  */
 public class Evaluate {
 

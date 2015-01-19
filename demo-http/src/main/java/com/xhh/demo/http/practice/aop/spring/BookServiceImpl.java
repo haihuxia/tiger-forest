@@ -1,25 +1,25 @@
 package com.xhh.demo.http.practice.aop.spring;
 
-import com.xhh.demo.http.practice.aop.spring.BookService;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by tiger on 2014/4/9.
+ * BookServiceImpl
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-19
+ * @since 1.6
  */
 @Service
 public class BookServiceImpl {
 
-    //@Override
     public void save(String bookName) {
         System.out.println("执行 save 方法");
     }
 
-    //@Override
     public void update(String bookId) {
         System.out.println("执行 update 方法");
     }
 
-    //@Override
     public void list() {
         System.out.println("执行 list 方法");
     }

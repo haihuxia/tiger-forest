@@ -1,7 +1,11 @@
 package com.xhh.demo.http.practice.sync;
 
 /**
- * Created by tiger on 14-6-13.
+ * ProducerConsumerExample
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-6-13
+ * @since 1.6
  */
 public class ProducerConsumerExample {
 

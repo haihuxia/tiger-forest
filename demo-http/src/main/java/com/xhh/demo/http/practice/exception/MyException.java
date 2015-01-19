@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by tiger on 2014/4/8.
+ * MyException
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-4-8
+ * @since 1.6
  */
 public class MyException extends Exception {
 

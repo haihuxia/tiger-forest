@@ -3,7 +3,11 @@ package com.xhh.demo.http.practice;
 import org.apache.commons.lang.Validate;
 
 /**
- * Created by tiger on 2014/3/27.
+ * CommonsLang
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 14-3-27
+ * @since 1.6
  */
 public class CommonsLang {
 

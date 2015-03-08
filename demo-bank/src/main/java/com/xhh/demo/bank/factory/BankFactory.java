@@ -37,7 +37,7 @@ public class BankFactory {
             bankPayService = BankFactory.create(bankRequest.getBankCode());
         } catch (IllegalArgumentException e) {
             log.error("call BankFactory.create error e: {}", e.getMessage());
-            log.info("银行编码错误或暂不支持该银行");
+            log.error("银行编码错误或暂不支持该银行");
             return;
         }
         Response<BankResponse> response = bankPayService.pay(bankRequest);

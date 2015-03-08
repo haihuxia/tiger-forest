@@ -51,7 +51,7 @@ public class GuavaCollections {
          * 集合工具
          *
          */
-        Map<String, Integer> filter = new HashMap<String, Integer>();
+        Map<String, Integer> filter = Maps.newHashMap();
         filter.put("A", 20);
         filter.put("B", 23);
         filter.put("C", 24);

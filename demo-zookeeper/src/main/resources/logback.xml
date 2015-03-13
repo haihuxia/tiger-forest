@@ -7,51 +7,10 @@
         </encoder>
     </appender>
 
-    <appender name="logInfoFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>/Users/tiger/project/logs/demo-zookeeper/info.log</File>
-        <encoder>
-            <Pattern>[%date] [%-5level] %logger %line --%mdc{client} [%X{TRACE_LOG_ID}] %msg%n</Pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/Users/tiger/project/logs/demo-zookeeper/info-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <maxHistory>30</maxHistory>
-            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>512MB</maxFileSize>
-            </TimeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>INFO</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
-    </appender>
-
-    <appender name="logErrorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>/Users/tiger/project/logs/demo-zookeeper/error.log</File>
-        <encoder>
-            <Pattern>[%date] [%-5level] %logger %line --%mdc{client} [%X{TRACE_LOG_ID}] %msg%n</Pattern>
-            <charset>UTF-8</charset>
-        </encoder>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/Users/tiger/project/logs/demo-zookeeper/error-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <maxHistory>30</maxHistory>
-            <TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>512MB</maxFileSize>
-            </TimeBasedFileNamingAndTriggeringPolicy>
-        </rollingPolicy>
-        <filter class="ch.qos.logback.classic.filter.LevelFilter">
-            <level>ERROR</level>
-            <onMatch>ACCEPT</onMatch>
-            <onMismatch>DENY</onMismatch>
-        </filter>
-    </appender>
-
     <logger name="org.apache.zookeeper" level="OFF" />
 
     <!-- INFO 输出到 info.log、ERROR 输出到 error.log -->
     <root level="DEBUG" name="com.xhh.demo">
-        <appender-ref ref="stdout"/>
         <appender-ref ref="stdout"/>
     </root>
 

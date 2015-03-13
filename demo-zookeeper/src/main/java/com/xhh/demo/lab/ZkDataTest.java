@@ -1,27 +1,24 @@
-package com.xhh.demo.zk;
+package com.xhh.demo.lab;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.api.*;
-import org.apache.curator.framework.recipes.cache.NodeCacheListener;
 import org.apache.curator.framework.state.ConnectionState;
 import org.apache.curator.framework.state.ConnectionStateListener;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.curator.utils.CloseableUtils;
 import org.apache.zookeeper.CreateMode;
-import org.apache.zookeeper.WatchedEvent;
-import org.apache.zookeeper.data.ACL;
 import org.apache.zookeeper.data.Stat;
 
 import java.io.File;
 import java.util.List;
 
 /**
- * zk 测试入口
+ * lab 测试入口
  *
- * <p>zk 测试例子
+ * <p>lab 测试例子
  *
  * @author tiger
  * @version 1.0.0 createTime: 15/3/11 下午5:55

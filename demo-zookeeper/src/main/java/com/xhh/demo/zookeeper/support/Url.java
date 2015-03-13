@@ -23,7 +23,7 @@ public final class URL implements Serializable {
     /** 连接 host */
     private final String host;
 
-    /** 端口 */
+    /** 连接端口 */
     private final int port;
 
     /**
@@ -32,6 +32,17 @@ public final class URL implements Serializable {
     protected URL() {
         host = null;
         port = 0;
+    }
+
+    /**
+     * 构造 URL
+     *
+     * @param host 连接 host
+     * @param port 连接 端口
+     */
+    public URL(String host, int port) {
+        this.host = host;
+        this.port = port;
     }
 
     /**

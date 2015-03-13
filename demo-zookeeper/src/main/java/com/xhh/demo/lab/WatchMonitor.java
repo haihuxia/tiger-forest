@@ -1,4 +1,4 @@
-package com.xhh.demo.zk;
+package com.xhh.demo.lab;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 监控 zk 目录下增、删、改的节点
+ * 监控 lab 目录下增、删、改的节点
  *
  * @author tiger
  * @version 1.0.0 createTime: 15/3/12 下午11:59

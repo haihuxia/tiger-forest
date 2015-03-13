@@ -15,6 +15,7 @@
         <module>demo-bank</module>
         <module>demo-hadoop</module>
         <module>demo-dispatch</module>
+        <module>demo-zookeeper</module>
     </modules>
 
     <properties>

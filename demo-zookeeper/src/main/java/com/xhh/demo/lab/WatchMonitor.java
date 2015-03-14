@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 监控 lab 目录下增、删、改的节点
+ * 监控 path 目录下结点的增、删、改
  *
  * @author tiger
  * @version 1.0.0 createTime: 15/3/12 下午11:59
@@ -41,7 +41,7 @@ public class WatchMonitor implements Runnable {
         thread.start();
     }
 
-    WatchMonitor () {
+    public WatchMonitor () {
         zkClient = CuratorFrameworkFactory.builder().connectString(ZK_CONN)
                 .sessionTimeoutMs(30000)
                 .connectionTimeoutMs(30000)
@@ -54,7 +54,7 @@ public class WatchMonitor implements Runnable {
             zkClient.getConnectionStateListenable().addListener(new ConnectionStateListener() {
                 @Override
                 public void stateChanged(CuratorFramework curatorFramework, ConnectionState connectionState) {
-                    log.debug("----------- connectionState.name: {}", connectionState.name());
+                    log.debug("【connectionState.name: {}】", connectionState.name());
                 }
             });
             zkClient.start();
@@ -72,20 +72,20 @@ public class WatchMonitor implements Runnable {
                 List<String> nodeListBefore = nodeList;
                 // 主结点的数据发生改变时
                 if (watchedEvent.getType() == Watcher.Event.EventType.NodeDataChanged) {
-                    log.info("Node data changed:" + watchedEvent.getPath());
+                    log.debug("Node data changed:" + watchedEvent.getPath());
                 }
                 if (watchedEvent.getType() == Watcher.Event.EventType.NodeDeleted){
-                    log.info("Node deleted:" + watchedEvent.getPath());
+                    log.debug("Node deleted:" + watchedEvent.getPath());
                 }
                 if(watchedEvent.getType()== Watcher.Event.EventType.NodeCreated){
-                    log.info("Node created:"+watchedEvent.getPath());
+                    log.debug("Node created:"+watchedEvent.getPath());
                 }
 
                 // 获取更新后的nodelist
                 try {
                     nodeList = zkClient.getChildren().forPath(watchedEvent.getPath());
                 } catch (KeeperException e) {
-                    System.out.println(watchedEvent.getPath()+" has no child, deleted.");
+                    log.debug(watchedEvent.getPath()+" has no child, deleted.");
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (Exception e) {
@@ -96,7 +96,7 @@ public class WatchMonitor implements Runnable {
                 if (nodeListBefore.size() < nodeListNow.size()) {
                     for (String str : nodeListNow) {
                         if (!nodeListBefore.contains(str)) {
-                            log.info("Node created:" + watchedEvent.getPath() + "/" + str);
+                            log.debug("Node created:" + watchedEvent.getPath() + "/" + str);
                         }
                     }
                 }
@@ -130,7 +130,7 @@ public class WatchMonitor implements Runnable {
                     e.printStackTrace();
                 }
             }
-            // sleep一会，减少CUP占用率
+            // 减少CUP占用率
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {

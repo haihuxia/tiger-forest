@@ -16,9 +16,7 @@ import java.io.File;
 import java.util.List;
 
 /**
- * lab 测试入口
- *
- * <p>lab 测试例子
+ * zk 测试入口
  *
  * @author tiger
  * @version 1.0.0 createTime: 15/3/11 下午5:55
@@ -27,14 +25,17 @@ import java.util.List;
 @Slf4j
 public class ZkDataTest {
 
+    /** curator zkClient */
     private static CuratorFramework zkClient = null;
 
-    private final static String ZK_CONN = "localhost:2181";
+    /** 连接字符创 */
+    private final static String CONNECT_STR = "localhost:2181";
 
+    /** 结点 */
     public static final String PATH = "/app1";
 
     public static void main(String[] args) throws InterruptedException {
-        zkClient = CuratorFrameworkFactory.builder().connectString(ZK_CONN)
+        zkClient = CuratorFrameworkFactory.builder().connectString(CONNECT_STR)
                 .sessionTimeoutMs(30000)
                 .connectionTimeoutMs(30000)
                 .canBeReadOnly(false)
@@ -47,7 +48,7 @@ public class ZkDataTest {
             zkClient.getConnectionStateListenable().addListener(new ConnectionStateListener() {
                 @Override
                 public void stateChanged(CuratorFramework curatorFramework, ConnectionState connectionState) {
-                    log.debug("----------- connectionState.name: {}", connectionState.name());
+                    log.debug("【connectionState.name: {}】", connectionState.name());
                 }
             });
 
@@ -55,13 +56,10 @@ public class ZkDataTest {
                 @Override
                 public void eventReceived(CuratorFramework curatorFramework,
                                           CuratorEvent curatorEvent) throws Exception {
-                    log.debug(".........  curatorEvent.type: {}", curatorEvent.getType().name());
+                    log.debug("【curatorEvent.type: {}】", curatorEvent.getType().name());
                 }
             });
             zkClient.start();
-
-            log.debug("namespace: {}", zkClient.getNamespace());
-
             test();
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,10 +101,22 @@ public class ZkDataTest {
         log.debug("createOrUpdate, path: {}, data: {}", path, data);
     }
 
+    /**
+     * 创建持久结点
+     *
+     * @param path 路径
+     * @throws Exception
+     */
     public void createPersistent(String path) throws Exception {
         zkClient.create().forPath(path);
     }
 
+    /**
+     * 创建临时结点
+     *
+     * @param path 路径
+     * @throws Exception
+     */
     public void createEphemeral(String path) throws Exception {
         zkClient.create().withMode(CreateMode.EPHEMERAL).forPath(path);
     }

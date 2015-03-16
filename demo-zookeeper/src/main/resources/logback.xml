@@ -8,6 +8,7 @@
     </appender>
 
     <logger name="org.apache.zookeeper" level="OFF" />
+    <logger name="org.apache.curator" level="OFF" />
 
     <!-- INFO 输出到 info.log、ERROR 输出到 error.log -->
     <root level="DEBUG" name="com.xhh.demo">

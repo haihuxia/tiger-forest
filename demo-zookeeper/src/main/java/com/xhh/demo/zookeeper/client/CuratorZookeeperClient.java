@@ -1,4 +1,4 @@
-package com.xhh.demo.zookeeper.curator;
+package com.xhh.demo.zookeeper.client;
 
 import com.xhh.demo.zookeeper.ChildListener;
 import com.xhh.demo.zookeeper.StateListener;

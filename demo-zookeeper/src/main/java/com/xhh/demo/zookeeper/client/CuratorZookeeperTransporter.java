@@ -1,7 +1,8 @@
-package com.xhh.demo.zookeeper.curator;
+package com.xhh.demo.zookeeper.client;
 
 import com.xhh.demo.zookeeper.ZookeeperClient;
 import com.xhh.demo.zookeeper.ZookeeperTransporter;
+import com.xhh.demo.zookeeper.client.CuratorZookeeperClient;
 import com.xhh.demo.zookeeper.support.URL;
 
 /**

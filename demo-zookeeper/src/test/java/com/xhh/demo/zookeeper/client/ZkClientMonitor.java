@@ -43,7 +43,7 @@ public class ZkClientMonitor implements Runnable {
                 }
             }
         });
-        // 增加子结点监听
+        // 增加子节点监听
         zkClient.addChildListener(PATH, new ChildListener() {
             @Override
             public void childChanged(String path, List<String> children) {

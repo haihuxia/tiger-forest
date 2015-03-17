@@ -28,7 +28,7 @@ public class InterProcessMutexTest {
     /** 重复次数 */
     private static final int REPETITIONS = 5;
 
-    /** 锁结点 */
+    /** 锁节点 */
     private static final String PATH = "/examples/locks";
 
     public static void main(String[] args) throws Exception {

@@ -31,7 +31,7 @@ public class ZkDataTest {
     /** 连接字符创 */
     private final static String CONNECT_STR = "localhost:2181";
 
-    /** 结点 */
+    /** 节点 */
     public static final String PATH = "/app1";
 
     public static void main(String[] args) throws InterruptedException {
@@ -89,7 +89,7 @@ public class ZkDataTest {
     }
 
     /**
-     * 创建或更新一个结点
+     * 创建或更新一个节点
      *
      * @param path 路径
      * @param data 数据
@@ -102,7 +102,7 @@ public class ZkDataTest {
     }
 
     /**
-     * 创建持久结点
+     * 创建持久节点
      *
      * @param path 路径
      * @throws Exception
@@ -112,7 +112,7 @@ public class ZkDataTest {
     }
 
     /**
-     * 创建临时结点
+     * 创建临时节点
      *
      * @param path 路径
      * @throws Exception
@@ -122,7 +122,7 @@ public class ZkDataTest {
     }
 
     /**
-     * 删除一个结点路径
+     * 删除一个节点路径
      *
      * @param path 路径
      * @throws Exception
@@ -161,7 +161,7 @@ public class ZkDataTest {
     }
 
     /**
-     * 获取结点下的子路径
+     * 获取节点下的子路径
      *
      * @param path 路径
      * @throws Exception

@@ -14,7 +14,7 @@ import java.util.Iterator;
 public class Stack<Item> {
 
     /**
-     * 栈顶结点
+     * 栈顶节点
      */
     private Node first;
 
@@ -24,14 +24,14 @@ public class Stack<Item> {
     private int n;
 
     /**
-     * 结点对象
+     * 节点对象
      */
     private class Node {
 
-        /** 当前结点 */
+        /** 当前节点 */
         Item item;
 
-        /** 下一个结点 */
+        /** 下一个节点 */
         Node next;
     }
 
@@ -89,7 +89,7 @@ public class Stack<Item> {
     private class StackIterator implements Iterator<Item> {
 
         /**
-         * 开始结点
+         * 开始节点
          */
         private Node current = first;
 

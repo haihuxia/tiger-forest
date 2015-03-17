@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 监控 path 目录下结点的增、删、改
+ * 监控 path 目录下节点的增、删、改
  *
  * @author tiger
  * @version 1.0.0 createTime: 15/3/12 下午11:59
@@ -30,10 +30,10 @@ public class WatchMonitor implements Runnable {
     /** zkConnectionString */
     private final static String ZK_CONN = "192.168.106.102:2181";
 
-    /** 监控结点 */
+    /** 监控节点 */
     public static final String PATH = "/app1";
 
-    /** 监控结点子结点列表 */
+    /** 监控节点子节点列表 */
     private static List<String> nodeList;
 
     public static void main(String[] args) {
@@ -68,9 +68,9 @@ public class WatchMonitor implements Runnable {
         CuratorWatcher wc = new CuratorWatcher() {
             @Override
             public void process(WatchedEvent watchedEvent) {
-                // 结点数据改变之前的结点列表
+                // 节点数据改变之前的节点列表
                 List<String> nodeListBefore = nodeList;
-                // 主结点的数据发生改变时
+                // 主节点的数据发生改变时
                 if (watchedEvent.getType() == Watcher.Event.EventType.NodeDataChanged) {
                     log.debug("Node data changed:" + watchedEvent.getPath());
                 }
@@ -92,7 +92,7 @@ public class WatchMonitor implements Runnable {
                     e.printStackTrace();
                 }
                 List<String> nodeListNow = nodeList;
-                // 增加结点
+                // 增加节点
                 if (nodeListBefore.size() < nodeListNow.size()) {
                     for (String str : nodeListNow) {
                         if (!nodeListBefore.contains(str)) {
@@ -104,11 +104,11 @@ public class WatchMonitor implements Runnable {
         };
 
         /**
-         * 持续结点监控
+         * 持续节点监控
          */
         while (true) {
             try {
-                // 监控主结点
+                // 监控主节点
                 zkClient.checkExists().usingWatcher(wc);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -122,7 +122,7 @@ public class WatchMonitor implements Runnable {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            // 对PATH下的每个结点都设置一个watcher
+            // 对PATH下的每个节点都设置一个watcher
             for (String nodeName : nodeList) {
                 try {
                     zkClient.checkExists().usingWatcher(wc).forPath(PATH + "/" + nodeName);

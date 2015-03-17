@@ -32,7 +32,7 @@ public class ExampleInterProcessMutex {
      * 构造函数
      *
      * @param client 客户端
-     * @param lockPath 锁结点
+     * @param lockPath 锁节点
      * @param resource 资源
      * @param clientName 客户端名称
      */

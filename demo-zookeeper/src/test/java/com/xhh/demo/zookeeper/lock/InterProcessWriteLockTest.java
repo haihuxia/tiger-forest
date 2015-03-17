@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class InterProcessWriteLockTest {
 
-    /** 锁结点 */
+    /** 锁节点 */
     private static final String PATH = "/examples/locks";
 
     public static void main(String[] args) throws Exception {

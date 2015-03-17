@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 public class InterProcessMultiLockTest {
 
     /**
-     * 锁结点
+     * 锁节点
      */
     private static final String PATH1 = "/examples/locks1";
     private static final String PATH2 = "/examples/locks2";

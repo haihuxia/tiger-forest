@@ -26,7 +26,7 @@ public abstract class AbstractZookeeperClient<TargetChildListener> implements Zo
     /** 状态监听 set */
 	private final Set<StateListener> stateListeners = new CopyOnWriteArraySet<StateListener>();
 
-    /** 子结点监听 ConcurrentMap */
+    /** 子节点监听 ConcurrentMap */
 	private final ConcurrentMap<String, ConcurrentMap<ChildListener, TargetChildListener>> childListeners
             = new ConcurrentHashMap<String, ConcurrentMap<ChildListener, TargetChildListener>>();
 
@@ -52,10 +52,10 @@ public abstract class AbstractZookeeperClient<TargetChildListener> implements Zo
 	}
 
     /**
-     * 创建结点
+     * 创建节点
      *
      * @param path 路径
-     * @param ephemeral 是否为短结点
+     * @param ephemeral 是否为短节点
      */
 	public void create(String path, boolean ephemeral) {
 		int i = path.lastIndexOf('/');
@@ -97,11 +97,11 @@ public abstract class AbstractZookeeperClient<TargetChildListener> implements Zo
 	}
 
     /**
-     * 增加子结点监听
+     * 增加子节点监听
      *
      * @param path 路径
      * @param listener 监听
-     * @return 子结点列表
+     * @return 子节点列表
      */
 	public List<String> addChildListener(String path, final ChildListener listener) {
 		ConcurrentMap<ChildListener, TargetChildListener> listeners = childListeners.get(path);
@@ -118,7 +118,7 @@ public abstract class AbstractZookeeperClient<TargetChildListener> implements Zo
 	}
 
     /**
-     * 删除子结点监听
+     * 删除子节点监听
      *
      * @param path 路径
      * @param listener 监听
@@ -165,14 +165,14 @@ public abstract class AbstractZookeeperClient<TargetChildListener> implements Zo
 	protected abstract void doClose();
 
     /**
-     * 创建持久结点
+     * 创建持久节点
      *
      * @param path 路径
      */
 	protected abstract void createPersistent(String path);
 
     /**
-     * 创建临时结点
+     * 创建临时节点
      *
      * @param path 路径
      */
@@ -187,16 +187,16 @@ public abstract class AbstractZookeeperClient<TargetChildListener> implements Zo
 	protected abstract TargetChildListener createTargetChildListener(ChildListener listener);
 
     /**
-     * 为子结点增加监听
+     * 为子节点增加监听
      *
      * @param path 路径
      * @param listener 监听
-     * @return 子结点列表
+     * @return 子节点列表
      */
 	protected abstract List<String> addTargetChildListener(String path, TargetChildListener listener);
 
     /**
-     * 删除子结点监听
+     * 删除子节点监听
      *
      * @param path 路径
      * @param listener 监听

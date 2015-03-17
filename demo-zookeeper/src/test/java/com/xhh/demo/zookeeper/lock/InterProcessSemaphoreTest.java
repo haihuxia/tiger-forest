@@ -24,7 +24,7 @@ public class InterProcessSemaphoreTest {
     /** 最大租约数 */
     private static final int MAX_LEASE = 10;
 
-    /** 锁结点 */
+    /** 锁节点 */
     private static final String PATH = "/examples/locks";
 
     public static void main(String[] args) throws Exception {

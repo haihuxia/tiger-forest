@@ -27,7 +27,7 @@ public class DistributedBarrierTest {
     /** 线程池大小 */
     private static final int COUNT = 5;
     
-    /** 锁结点 */
+    /** 锁节点 */
     private static final String PATH = "/examples/barrier";
 
     public static void main(String[] args) throws Exception {

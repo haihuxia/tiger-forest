@@ -12,12 +12,12 @@ import java.util.Iterator;
 public class Queue<Item> {
 
     /**
-     * 最早添加的结点
+     * 最早添加的节点
      */
     private Node first;
 
     /**
-     * 最近添加的结点
+     * 最近添加的节点
      */
     private Node last;
 
@@ -27,14 +27,14 @@ public class Queue<Item> {
     private int n;
 
     /**
-     * 结点嵌套类
+     * 节点嵌套类
      */
     private class Node {
 
-        /** 当前结点 */
+        /** 当前节点 */
         Item item;
 
-        /** 下一个结点 */
+        /** 下一个节点 */
         Node next;
     }
 
@@ -100,7 +100,7 @@ public class Queue<Item> {
     private class QueueIterator implements Iterator<Item> {
 
         /**
-         * 开始结点
+         * 开始节点
          */
         private Node current = first;
 

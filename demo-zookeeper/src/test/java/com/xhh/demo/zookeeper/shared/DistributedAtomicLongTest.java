@@ -29,7 +29,7 @@ public class DistributedAtomicLongTest {
     /** 线程池大小 */
     private static final int COUNT = 5;
 
-    /** 锁结点 */
+    /** 锁节点 */
     private static final String PATH = "/examples/counter1";
 
     public static void main(String[] args) throws Exception {

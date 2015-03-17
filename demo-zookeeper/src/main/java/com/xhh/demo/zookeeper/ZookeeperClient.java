@@ -13,41 +13,41 @@ import com.xhh.demo.zookeeper.support.URL;
 public interface ZookeeperClient {
 
     /**
-     * 创建结点
-     * 1.如果 ephemeral 为 true，创建临时结点，当 zkClient 断开时该结点会被删除
-     * 2.如果 ephemeral 为 false，创建持久结点，当 zkClient 断开时该结点不会被删除
+     * 创建节点
+     * 1.如果 ephemeral 为 true，创建临时节点，当 zkClient 断开时该节点会被删除
+     * 2.如果 ephemeral 为 false，创建持久节点，当 zkClient 断开时该节点不会被删除
      *
      * @param path 路径
-     * @param ephemeral 是否为临时结点
+     * @param ephemeral 是否为临时节点
      */
     void create(String path, boolean ephemeral);
 
     /**
-     * 删除结点
+     * 删除节点
      *
      * @param path 路径
      */
     void delete(String path);
 
     /**
-     * 获取子结点
+     * 获取子节点
      *
      * @param path 路径
-     * @return 子结点列表
+     * @return 子节点列表
      */
     List<String> getChildren(String path);
 
     /**
-     * 增加子结点监听
+     * 增加子节点监听
      *
      * @param path 路径
      * @param listener 监听
-     * @return 子结点列表
+     * @return 子节点列表
      */
     List<String> addChildListener(String path, ChildListener listener);
 
     /**
-     * 删除子结点监听
+     * 删除子节点监听
      *
      * @param path 路径
      * @param listener 监听
@@ -55,14 +55,14 @@ public interface ZookeeperClient {
     void removeChildListener(String path, ChildListener listener);
 
     /**
-     * 增加状态结点监听
+     * 增加状态节点监听
      *
      * @param listener 监听
      */
     void addStateListener(StateListener listener);
 
     /**
-     * 删除状态结点监听
+     * 删除状态节点监听
      *
      * @param listener 监听
      */

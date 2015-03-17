@@ -12,7 +12,7 @@ import java.util.Iterator;
 public class Bag<Item> {
 
     /**
-     * 背包首结点
+     * 背包首节点
      */
     private Node first;
 
@@ -22,14 +22,14 @@ public class Bag<Item> {
     private int n;
 
     /**
-     * 结点对象
+     * 节点对象
      */
     private class Node {
 
-        /** 当前结点 */
+        /** 当前节点 */
         Item item;
 
-        /** 下一个结点 */
+        /** 下一个节点 */
         Node next;
     }
 
@@ -76,7 +76,7 @@ public class Bag<Item> {
     private class BagIterator implements Iterator<Item> {
 
         /**
-         * 开始结点
+         * 开始节点
          */
         private Node current = first;
 

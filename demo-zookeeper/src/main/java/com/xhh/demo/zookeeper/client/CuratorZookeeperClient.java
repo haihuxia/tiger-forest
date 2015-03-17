@@ -60,7 +60,7 @@ public class CuratorZookeeperClient extends AbstractZookeeperClient<CuratorWatch
     }
 
     /**
-     * 创建持久结点
+     * 创建持久节点
      *
      * @param path 路径
      */
@@ -69,14 +69,14 @@ public class CuratorZookeeperClient extends AbstractZookeeperClient<CuratorWatch
         try {
             zkClient.create().forPath(path);
         } catch (KeeperException.NodeExistsException e) {
-            // 屏蔽创建已存在结点的异常处理
+            // 屏蔽创建已存在节点的异常处理
         } catch (Exception e) {
             throw new IllegalStateException(e.getMessage(), e);
         }
     }
 
     /**
-     * 创建临时结点
+     * 创建临时节点
      *
      * @param path 路径
      */
@@ -85,14 +85,14 @@ public class CuratorZookeeperClient extends AbstractZookeeperClient<CuratorWatch
         try {
             zkClient.create().withMode(CreateMode.EPHEMERAL).forPath(path);
         } catch (KeeperException.NodeExistsException e) {
-            // 屏蔽创建已存在结点的异常处理
+            // 屏蔽创建已存在节点的异常处理
         } catch (Exception e) {
             throw new IllegalStateException(e.getMessage(), e);
         }
     }
 
     /**
-     * 删除结点
+     * 删除节点
      *
      * @param path 路径
      */
@@ -101,17 +101,17 @@ public class CuratorZookeeperClient extends AbstractZookeeperClient<CuratorWatch
         try {
             zkClient.delete().forPath(path);
         } catch (KeeperException.NoNodeException e) {
-            // 屏蔽删除时结点不存在的异常处理
+            // 屏蔽删除时节点不存在的异常处理
         } catch (Exception e) {
             throw new IllegalStateException(e.getMessage(), e);
         }
     }
 
     /**
-     * 获得子结点
+     * 获得子节点
      *
      * @param path 路径
-     * @return 子结点列表
+     * @return 子节点列表
      */
     @Override
     public List<String> getChildren(String path) {
@@ -154,11 +154,11 @@ public class CuratorZookeeperClient extends AbstractZookeeperClient<CuratorWatch
     }
 
     /**
-     * 为子结点增加监听
+     * 为子节点增加监听
      *
      * @param path 路径
      * @param curatorWatcher 监听
-     * @return 子结点列表
+     * @return 子节点列表
      */
     @Override
     protected List<String> addTargetChildListener(String path, CuratorWatcher curatorWatcher) {
@@ -172,7 +172,7 @@ public class CuratorZookeeperClient extends AbstractZookeeperClient<CuratorWatch
     }
 
     /**
-     * 删除子结点监听
+     * 删除子节点监听
      *
      * @param path 路径
      * @param curatorWatcher 监听

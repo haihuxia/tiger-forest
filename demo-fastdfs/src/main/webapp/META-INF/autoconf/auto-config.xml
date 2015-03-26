@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <!-- 日志配置 -->
+    <group name="logger">
+        <property name="logger.logRoot" defaultValue="/home/tiger/project/logs" description="日志根目录"/>
+        <property name="logger.logLevel" defaultValue="INFO" description="日志打印级别"/>
+        <property name="logger.lib.logLevel" defaultValue="INFO" description=" 工具包日志打印级别"/>
+        <property name="logger.info.appender" defaultValue="logInfoFile" description="info 日志打印输出"/>
+        <property name="logger.error.appender" defaultValue="logErrorFile" description="error 日志打印输出"/>
+    </group>
+
+    <!-- 读库配置 -->
+    <group name="database">
+        <property name="db.jdbcUrl" defaultValue="jdbc:oracle:thin:@192.168.1.253:1521:zhangwudev"/>
+        <property name="db.jdbcUsername" defaultValue="ZWTX_app1" />
+        <property name="db.jdbcPassword" defaultValue="bestpay" />
+    </group>
+
+    <!-- 数据连接池配置 -->
+    <group name="jdbc">
+        <property name="jdbc.driverClassName" defaultValue="oracle.jdbc.driver.OracleDriver" />
+        <property name="jdbc.initialSize" defaultValue="10" />
+        <property name="jdbc.minIdle" defaultValue="10" />
+        <property name="jdbc.maxIdle" defaultValue="15" />
+        <property name="jdbc.maxActive" defaultValue="15" />
+        <property name="jdbc.maxWait" defaultValue="1000" />
+        <property name="jdbc.testOnBorrow" defaultValue="false" />
+        <property name="jdbc.testWhileIdle" defaultValue="true" />
+        <property name="jdbc.timeBetweenEvictionRunsMillis" defaultValue="10000" />
+        <property name="jdbc.numTestsPerEvictionRun" defaultValue="3" />
+        <property name="jdbc.minEvictableIdleTimeMillis" defaultValue="300000" />
+    </group>
+
+    <!-- 文件生成配置 -->
+    <script>
+        <generate template="config.properties.vm" destfile="WEB-INF/classes/properties/config.properties"
+                  charset="UTF-8"/>
+        <generate template="spring-datasources.xml.vm"
+                  destfile="WEB-INF/classes/spring/spring-datasources.xml"/>
+        <generate template="logback.xml.vm" destfile="WEB-INF/classes/logback.xml"/>
+    </script>
+</config>

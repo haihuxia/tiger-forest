@@ -17,6 +17,9 @@
         <module>demo-dispatch</module>
         <module>demo-zookeeper</module>
         <module>demo-test</module>
+        <module>demo-fastdfs</module>
+        <module>demo-zk-test</module>
+        <module>demo-zookeeper-test</module>
     </modules>
 
     <properties>

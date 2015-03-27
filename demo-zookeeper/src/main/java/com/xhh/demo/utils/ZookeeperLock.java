@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class ZookeeperLock {
 
-    private String zkServerUrl = "localhost:2181";
+    private String zkServerUrl = "192.168.106.19:32181";
 
     private long lockTime = 3;
 
@@ -88,6 +88,22 @@ public class ZookeeperLock {
         try {
             if(lock != null){
                 lock.release();
+            }
+        } catch (Exception e) {
+            log.error("zookeeper lock release fail:", e);
+        }
+    }
+
+    /**
+     * 释放zk锁
+     * @param lock
+     */
+    public synchronized  void  release(InterProcessMutex lock, String basePath) {
+        try {
+            if(lock != null){
+                lock.release();
+                log.debug("delete basePath: {}", basePath);
+                client.delete().forPath(basePath);
             }
         } catch (Exception e) {
             log.error("zookeeper lock release fail:",e);

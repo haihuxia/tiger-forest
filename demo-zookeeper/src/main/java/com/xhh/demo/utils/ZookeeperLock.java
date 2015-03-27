@@ -1,10 +1,12 @@
 package com.xhh.demo.utils;
 
+import com.google.common.base.Objects;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.zookeeper.KeeperException;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -17,7 +19,7 @@ public class ZookeeperLock {
 
     private String zkServerUrl = "192.168.106.19:32181";
 
-    private long lockTime = 3;
+    private long lockTime = 30;
 
     private CuratorFramework client = null;
 
@@ -34,7 +36,6 @@ public class ZookeeperLock {
      * 初始化连接
      */
     private void connect() {
-
         client = CuratorFrameworkFactory.newClient(zkServerUrl, new ExponentialBackoffRetry(100, 3));
         client.start();
     }
@@ -98,15 +99,45 @@ public class ZookeeperLock {
      * 释放zk锁
      * @param lock
      */
-    public synchronized  void  release(InterProcessMutex lock, String basePath) {
+    public synchronized  void  release1(InterProcessMutex lock, String basePath) {
         try {
-            if(lock != null){
+            if (lock != null) {
                 lock.release();
                 log.debug("delete basePath: {}", basePath);
-                client.delete().forPath(basePath);
+                client.delete().forPath("/cluster/app3");
+            }
+        } catch (KeeperException e) {
+            if (!e.code().name().equals(KeeperException.Code.NOTEMPTY.name())) {
+                log.error("zookeeper lock release fail:",e);
             }
         } catch (Exception e) {
             log.error("zookeeper lock release fail:",e);
+        }
+    }
+
+    /**
+     * 释放zk锁
+     * @param lock
+     *
+     */
+    /**
+     * 释放zk锁
+     * @param lock InterProcessMutex
+     * @param basePath 锁节点
+     */
+    public synchronized  void  release(InterProcessMutex lock, String basePath) {
+        try {
+            if (lock != null) {
+                lock.release();
+                // 尝试删除锁节点
+                client.delete().forPath(basePath);
+            }
+        } catch (KeeperException e) {
+            if (!Objects.equal(e.code().name(), KeeperException.Code.NOTEMPTY.name())) {
+                log.error("zookeeper lock KeeperException: {}",e);
+            }
+        } catch (Exception e) {
+            log.error("zookeeper lock release fail: {}",e);
         }
     }
 

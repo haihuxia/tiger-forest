@@ -83,6 +83,9 @@ public class ZkDataTest {
 //        zkDataTest.createEphemeral("/aa");
 //        zkDataTest.createrOrUpdate(PATH + "/b", "1111");
 //        zkDataTest.createrOrUpdate("/app3/aa", "aa");
+        //zkDataTest.createEphemeral("/app3/aa");
+        zkClient.create().withMode(CreateMode.EPHEMERAL).forPath("/app3/aa");
+        Thread.sleep(3000);
         zkClient.delete().forPath("/app3");
         //zkDataTest.delete("/app3");
 //        zkDataTest.createrOrUpdate(PATH + "/c", "2222");

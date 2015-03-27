@@ -26,10 +26,10 @@ public class ZkTest extends BaseTest {
     private ZookeeperLock zookeeperLock;
 
     /** 线程池大小 */
-    private static final int THREAD_COUNT = 5;
+    private static final int THREAD_COUNT = 3;
 
     /** 锁空间 */
-    private static final int LOCK_COUNT = 5;
+    private static final int LOCK_COUNT = 1;
 
     @Test
     public void nodeTest() {
@@ -43,7 +43,7 @@ public class ZkTest extends BaseTest {
                             InterProcessMutex lock = null;
                             String path = null;
                             try {
-                                path = "/lock" + System.nanoTime();
+                                path = "/lock1";
                                 log.debug("path: {}", path);
                                 lock = zookeeperLock.creatInterProcessMutex(path);
                                 zookeeperLock.acquire(lock);
@@ -51,7 +51,7 @@ public class ZkTest extends BaseTest {
                             } catch (Throwable e) {
                                 e.printStackTrace();
                             } finally {
-                                zookeeperLock.release(lock, path);
+                                //zookeeperLock.release(lock, path);
                             }
                         }
                         return null;

@@ -23,10 +23,10 @@ import java.util.concurrent.TimeUnit;
 public class InterProcessMutexTest {
 
     /** 线程池大小 */
-    private static final int COUNT = 5;
+    private static final int COUNT = 1;
 
     /** 重复次数 */
-    private static final int REPETITIONS = 5;
+    private static final int REPETITIONS = 1;
 
     /** 锁节点 */
     private static final String PATH = "/examples/locks";

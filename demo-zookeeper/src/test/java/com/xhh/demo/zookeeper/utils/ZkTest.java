@@ -43,7 +43,7 @@ public class ZkTest extends BaseTest {
                             InterProcessMutex lock = null;
                             String path = null;
                             try {
-                                path = "/lock1";
+                                path = "/lock1/aaa";
                                 log.debug("path: {}", path);
                                 lock = zookeeperLock.creatInterProcessMutex(path);
                                 zookeeperLock.acquire(lock);
@@ -51,7 +51,7 @@ public class ZkTest extends BaseTest {
                             } catch (Throwable e) {
                                 e.printStackTrace();
                             } finally {
-                                //zookeeperLock.release(lock, path);
+                                zookeeperLock.release(lock, path);
                             }
                         }
                         return null;

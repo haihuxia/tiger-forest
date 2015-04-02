@@ -30,7 +30,7 @@ public class ZkDataTest {
     private static CuratorFramework zkClient = null;
 
     /** 连接字符创 */
-    private final static String CONNECT_STR = "localhost:2181";
+    private final static String CONNECT_STR = "192.168.106.19:32181";
 
     /** 节点 */
     public static final String PATH = "/app1";
@@ -73,7 +73,7 @@ public class ZkDataTest {
 
     public static void test() throws Exception {
         ZkDataTest zkDataTest = new ZkDataTest();
-        zkDataTest.getChildren(PATH);
+//        zkDataTest.getChildren(PATH);
 //        if (zkDataTest.checkExist(PATH)) {
 //            zkDataTest.delete(PATH);
 //        }
@@ -81,9 +81,14 @@ public class ZkDataTest {
         log.debug("namespace: {}", zkClient.getNamespace());
         log.debug("start to getListChildren");
 //        zkDataTest.createrOrUpdate(PATH + "/a", "cccc");
-        zkDataTest.createEphemeral(PATH + "/aa");
+//        zkDataTest.createEphemeral("/aa");
 //        zkDataTest.createrOrUpdate(PATH + "/b", "1111");
-//        zkDataTest.createrOrUpdate("/app3", "333");
+//        zkDataTest.createrOrUpdate("/app3/aa", "aa");
+        //zkDataTest.createEphemeral("/app3/aa");
+        zkClient.create().withMode(CreateMode.EPHEMERAL).forPath("/app3/aa");
+        Thread.sleep(3000);
+        zkClient.delete().forPath("/app3");
+        //zkDataTest.delete("/app3");
 //        zkDataTest.createrOrUpdate(PATH + "/c", "2222");
 //        zkDataTest.delete(PATH + "/a");
 //        zkDataTest.delete(PATH + "/b");

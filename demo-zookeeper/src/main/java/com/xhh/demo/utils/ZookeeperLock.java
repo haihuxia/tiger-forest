@@ -1,10 +1,12 @@
 package com.xhh.demo.utils;
 
+import com.google.common.base.Objects;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.zookeeper.KeeperException;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -94,6 +96,27 @@ public class ZookeeperLock {
             }
         } catch (Exception e) {
             log.error("zookeeper lock release fail: {}", e);
+        }
+    }
+
+    /**
+     * 释放zk锁
+     * @param lock InterProcessMutex
+     * @param basePath 锁节点
+     */
+    public synchronized  void  release(InterProcessMutex lock, String basePath) {
+        try {
+            if (lock != null) {
+                lock.release();
+                // 尝试删除锁节点
+                client.delete().forPath(basePath);
+            }
+        } catch (KeeperException e) {
+            if (!Objects.equal(e.code().name(), KeeperException.Code.NOTEMPTY.name())) {
+                log.error("zookeeper lock KeeperException: {}",e);
+            }
+        } catch (Exception e) {
+            log.error("zookeeper lock release fail: {}",e);
         }
     }
 

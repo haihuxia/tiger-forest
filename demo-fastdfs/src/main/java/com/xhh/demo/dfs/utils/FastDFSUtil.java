@@ -75,15 +75,14 @@ public class FastDFSUtil {
      * @param localFileName  下载到本地的文件名
      * @return int                  文件下载结果
      */
-    public int downloadFile(String groupName, String remoteFilename, String localFileName) {
+    public int download(String groupName, String remoteFilename, String localFileName) {
         init();
         int result = -1;
         TrackerServer trackerServer = null;
-        StorageServer storageServer = null;
         try {
             TrackerClient trackerClient = new TrackerClient();
             trackerServer = trackerClient.getConnection();
-            StorageClient storageClient = new StorageClient(trackerServer, storageServer);
+            StorageClient storageClient = new StorageClient(trackerServer, null);
             // 下载文件
             groupName = StringUtils.isEmpty(groupName) ? "group1" : groupName;
             result = storageClient.download_file(groupName, remoteFilename, localFileName);
@@ -91,7 +90,7 @@ public class FastDFSUtil {
         } catch (Exception e) {
             log.error("下载文件失败， remoteFilename: {}, localFileName: {}", remoteFilename, localFileName, e);
         } finally {
-            closeDFSServer(trackerServer, storageServer);
+            closeDFSServer(trackerServer, null);
         }
         return result;
     }
@@ -107,18 +106,17 @@ public class FastDFSUtil {
         init();
         int result = -1;
         TrackerServer trackerServer = null;
-        StorageServer storageServer = null;
         try {
             TrackerClient trackerClient = new TrackerClient();
             trackerServer = trackerClient.getConnection();
-            StorageClient storageClient = new StorageClient(trackerServer, storageServer);
+            StorageClient storageClient = new StorageClient(trackerServer, null);
             // 删除文件
             groupName = StringUtils.isEmpty(groupName) ? "group1" : groupName;
             result = storageClient.delete_file(groupName, remoteFilename);
         } catch (Exception e) {
             log.error("删除文件失败， remoteFilename: {}, ", remoteFilename, e);
         } finally {
-            closeDFSServer(trackerServer, storageServer);
+            closeDFSServer(trackerServer, null);
         }
         return result;
     }
@@ -126,34 +124,33 @@ public class FastDFSUtil {
     /**
      * 上传文件到FastDFS服务器
      *
-     * @param imageStream
-     * @return Map<String, String> 远程返回的文件名称和group名称
-     * @throws Exception
+     * @param localFileName 文件流
+     * @return 远程返回的文件名称和group名称
      */
-    public Map<String, String> uploadStream(String imageStream) {
+    public Map<String, String> upload(String localFileName) {
         Map<String, String> dfsMap = new HashMap<String, String>();
         TrackerServer trackerServer = null;
-        StorageServer storageServer = null;
         try {
             // 初始化连接
             TrackerClient trackerClient = new TrackerClient();
             trackerServer = trackerClient.getConnection();
-            StorageClient storageClient = new StorageClient(trackerServer, storageServer);
+            StorageClient storageClient = new StorageClient(trackerServer, null);
 
-            byte[] imageBytes = Base64.decodeBase64(imageStream);
-
-            String[] results = storageClient.upload_file(imageBytes, "jpg", null);        // 上传文件
+            byte[] imageBytes = Base64.decodeBase64(localFileName);
+            String fileExtName = localFileName.substring(localFileName.lastIndexOf(".") + 1);
+            log.debug("fileExtName: {}", fileExtName);
+            String[] results = storageClient.upload_file(imageBytes, null, null);        // 上传文件
             if (results == null) {
                 log.error("FastDFS文件上传失败,Error Code【{}】", storageClient.getErrorCode());
             } else {
                 log.debug("文件上传成功;GROUP_NAME:{},REMOTE_FILE_NAME:{} ", results[0], results[1]);
                 dfsMap.put("GROUP_NAME", results[0]);             // 远程返回的文件名称
-                dfsMap.put("REMOTE_FILE_NAME", results[1]);      // 文件的groupId
+                dfsMap.put("REMOTE_FILE_NAME", results[1]);       // 文件的groupId
             }
         } catch (Exception e) {
             log.error("FastDFS文件上传异常：{}", e);
         } finally {
-            closeDFSServer(trackerServer, storageServer);
+            closeDFSServer(trackerServer, null);
         }
         return dfsMap;
     }

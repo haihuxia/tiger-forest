@@ -22,4 +22,8 @@ public class Fruits {
         return list;
     }
 
+    public static void main(String[] args) {
+        System.out.println(Integer.getInteger("curator-default-session-timeout", '\uea60').intValue());
+    }
+
 }

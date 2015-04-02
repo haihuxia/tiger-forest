@@ -11,13 +11,16 @@ import javax.annotation.PostConstruct;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 测试工具类
+ *
+ * @author tiger
+ * @version 1.0.0 createTime: 15/3/28 下午2:56
+ * @since 1.6
+ */
 @Component
 @Slf4j
 public class ZookeeperLock {
-
-    private String zkServerUrl = "localhost:2181";
-
-    private long lockTime = 3;
 
     private CuratorFramework client = null;
 
@@ -26,7 +29,7 @@ public class ZookeeperLock {
         try {
             connect();
         } catch (Exception e) {
-            log.error("zookeeper connect  error：" , e);
+            log.error("zookeeper connect  error：{}" , e);
         }
     }
 
@@ -34,7 +37,8 @@ public class ZookeeperLock {
      * 初始化连接
      */
     private void connect() {
-
+        /* 连接字符串 */
+        String zkServerUrl = "localhost:2181";
         client = CuratorFrameworkFactory.newClient(zkServerUrl, new ExponentialBackoffRetry(100, 3));
         client.start();
     }
@@ -42,7 +46,7 @@ public class ZookeeperLock {
     /**
      *
      * @param path  锁定路径
-     * @return
+     * @return 锁
      */
     public InterProcessMutex creatInterProcessMutex(String path){
        return new InterProcessMutex(client, path);
@@ -50,11 +54,12 @@ public class ZookeeperLock {
 
     /**
      * 抢zk锁，重载方法，默认使用配置文件的锁定时间
-     * @param lock
-     * @return
+     * @param lock 锁
      */
     public  void acquire(InterProcessMutex lock) {
         long beginTime = new Date().getTime();
+        /* 超时时间 */
+        long lockTime = 3;
         acquire(lock, lockTime);
         long endTime = new Date().getTime();
         if((endTime - beginTime) > 3000){
@@ -62,12 +67,10 @@ public class ZookeeperLock {
         }
     }
 
-
     /**
      * 抢zk锁，重载方法，可以自定义锁定时间
      * @param lock 单位(秒)
      * @param lockTime 锁定时间
-     * @return
      */
     public void acquire(InterProcessMutex lock, long lockTime) {
         try {
@@ -82,15 +85,15 @@ public class ZookeeperLock {
 
     /**
      * 释放zk锁
-     * @param lock
+     * @param lock 锁
      */
-    public synchronized  void  release(InterProcessMutex lock) {
+    public synchronized void release(InterProcessMutex lock) {
         try {
             if(lock != null){
                 lock.release();
             }
         } catch (Exception e) {
-            log.error("zookeeper lock release fail:",e);
+            log.error("zookeeper lock release fail: {}", e);
         }
     }
 

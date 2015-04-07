@@ -3,7 +3,7 @@
 <mapper namespace="com.xhh.demo.dfs.dal.mapper.DBDataMapper" >
 
     <resultMap id="BaseResultMap" type="com.xhh.demo.dfs.dal.models.DBModelDO" >
-        <id column="T_SEQ" property="id" jdbcType="DECIMAL" />
+        <id column="T_SEQ" property="id" jdbcType="VARCHAR" />
         <id column="ID_PIC" property="fileName" jdbcType="VARCHAR" />
         <!--<result column="CREATED_AT" property="createdAt" jdbcType="TIMESTAMP" />-->
         <!--<result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />-->
@@ -52,4 +52,15 @@
             rnum > #{startIndex,jdbcType=DECIMAL}
     </select>
 
+    <!-- 更新申请记录表 -->
+    <update id="update" parameterType="java.util.HashMap">
+        /* update */
+        UPDATE
+            T_REALNAME_APPLY
+        SET
+            INPUT_DATE = SYSDATE,
+            ID_PIC = #{fileName,jdbcType=VARCHAR}
+        WHERE
+            ID = #{id,jdbcType=VARCHAR}
+    </update>
 </mapper>

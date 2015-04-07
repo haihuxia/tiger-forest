@@ -30,4 +30,13 @@ public interface DBDataMapper {
      */
     List<DBModelDO> selectByPage(@Param("startIndex") int startIndex, @Param("endIndex") int endIndex);
 
+    /**
+     * 更新数据
+     *
+     * @param id id
+     * @param fileName 文件名
+     * @return 更新条数
+     */
+    int update(@Param("id") String id, @Param("fileName") String fileName);
+
 }

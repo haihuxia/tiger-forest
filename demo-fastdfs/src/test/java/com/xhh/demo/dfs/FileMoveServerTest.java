@@ -17,14 +17,15 @@ public class FileMoveServerTest extends BaseTest {
     @Autowired
     private FileMoveProvider provider;
 
-    @Autowired
-    private FileMoveConsumer consumer;
-
     @Test
     public void move() {
         log.debug("测试开始。。。。");
-        new Thread(provider).start();
-        new Thread(consumer).start();
-        new Thread(consumer).start();
+        provider.moveFile();
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

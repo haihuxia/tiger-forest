@@ -6,9 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * 文件迁移 helper
@@ -30,8 +28,8 @@ public class FileMoveHelper {
      * @return 数据条数
      */
     public int queryCount() {
-        //return dbDataMapper.selectCount();
-        return 100;
+        return dbDataMapper.selectCount();
+//        return 100;
     }
 
     /**
@@ -42,17 +40,17 @@ public class FileMoveHelper {
      * @return 数据列表
      */
     public List<DBModelDO> queryByPage(int startIndes, int endIndex) {
-        //return dbDataMapper.selectByPage(startIndes, endIndex);
-
-        List<DBModelDO> list = new ArrayList<DBModelDO>();
-        for (int i = 0; i < 10; i++) {
-            DBModelDO model = new DBModelDO();
-            String id = UUID.randomUUID().toString();
-            log.debug("id: {}", id);
-            model.setId(id);
-            model.setFileName(id);
-            list.add(model);
-        }
-        return list;
+        return dbDataMapper.selectByPage(startIndes, endIndex);
+//
+//        List<DBModelDO> list = new ArrayList<DBModelDO>();
+//        for (int i = 0; i < 10; i++) {
+//            DBModelDO model = new DBModelDO();
+//            String id = Math.round(Math.random()*8999+1000) + "";
+//            log.debug("id: {}", id);
+//            model.setId(id);
+//            model.setFileName(id);
+//            list.add(model);
+//        }
+//        return list;
     }
 }

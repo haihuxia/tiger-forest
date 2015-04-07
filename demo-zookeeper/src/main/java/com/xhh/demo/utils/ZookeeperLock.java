@@ -94,22 +94,14 @@ public class ZookeeperLock {
                 lock.release();
             }
         } catch (Exception e) {
-<<<<<<< HEAD
             log.error("zookeeper lock release fail: {}", e);
-=======
-            log.error("zookeeper lock release fail:", e);
->>>>>>> 91077b70ead190616de0072aa56997c37343b985
         }
     }
 
     /**
      * 释放zk锁
-<<<<<<< HEAD
      * @param lock InterProcessMutex
      * @param basePath 锁节点
-=======
-     * @param lock
->>>>>>> 91077b70ead190616de0072aa56997c37343b985
      */
     public synchronized  void  release(InterProcessMutex lock, String basePath) {
         try {

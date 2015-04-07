@@ -23,14 +23,14 @@ public class FastDFSUtilTest extends BaseTest {
 
     @Test
     public void upload() {
-        Map<String, String> map = fastDFSUtil.upload("/Users/tiger/antx.properties");
+        Map<String, String> map = fastDFSUtil.uploadByPath("/Users/tiger/ubuntu.png");
         log.debug("fastDFSUtil.uploadStream, map: {}", map);
     }
 
     @Test
     public void download() {
-        String remoteFileName = "M00/04/CF/wKhqC1Uc_bmAL_jhAAAAFG4L_F47611758";
-        int count = fastDFSUtil.download(null, remoteFileName, "/Users/tiger/project/logs/aaa.properties");
+        String remoteFileName = "M00/04/CF/wKhqC1Ud-HGAeZXRAAF6U-o7fms877.png";
+        int count = fastDFSUtil.download(null, remoteFileName, "/Users/tiger/project/logs/aab.png");
         log.debug("fastDFSUtil.download, count: {}", count);
         // 删除
         count = fastDFSUtil.delete(null, remoteFileName);

@@ -19,9 +19,7 @@ public class FileMoveServerTest extends BaseTest {
 
     @Test
     public void move() {
-        log.debug("测试开始。。。。");
         provider.moveFile();
-
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {

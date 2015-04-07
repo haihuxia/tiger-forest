@@ -5,10 +5,6 @@
     <resultMap id="BaseResultMap" type="com.xhh.demo.dfs.dal.models.DBModelDO" >
         <id column="T_SEQ" property="id" jdbcType="VARCHAR" />
         <id column="ID_PIC" property="fileName" jdbcType="VARCHAR" />
-        <!--<result column="CREATED_AT" property="createdAt" jdbcType="TIMESTAMP" />-->
-        <!--<result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />-->
-        <!--<result column="UPDATED_AT" property="updatedAt" jdbcType="TIMESTAMP" />-->
-        <!--<result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR" />-->
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -56,11 +52,11 @@
     <update id="update" parameterType="java.util.HashMap">
         /* update */
         UPDATE
-            T_REALNAME_APPLY
+            T_REALNAME_APPLY_FASTDFS
         SET
             INPUT_DATE = SYSDATE,
             ID_PIC = #{fileName,jdbcType=VARCHAR}
         WHERE
-            ID = #{id,jdbcType=VARCHAR}
+            T_SEQ = #{id,jdbcType=VARCHAR}
     </update>
 </mapper>

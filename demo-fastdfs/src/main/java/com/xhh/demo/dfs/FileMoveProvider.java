@@ -38,16 +38,16 @@ public class FileMoveProvider implements Runnable {
     private final ArrayBlockingQueue<DBModelDO> queue = new ArrayBlockingQueue<DBModelDO>(2000);
 
     /** 每页条数 */
-    private static final int PAGE_SIZE = 10;
+    private static final int PAGE_SIZE = 2;
 
     /** 开始迁移 */
     public void moveFile() {
         // 启动消费者
-        executor.execute(new FileMoveConsumer(queue, fastDFSUtil));
+        executor.execute(new FileMoveConsumer(queue, fastDFSUtil, fileMoveHelper));
         // 启动消费者
-        executor.execute(new FileMoveConsumer(queue, fastDFSUtil));
+        executor.execute(new FileMoveConsumer(queue, fastDFSUtil, fileMoveHelper));
         // 启动消费者
-        executor.execute(new FileMoveConsumer(queue, fastDFSUtil));
+        executor.execute(new FileMoveConsumer(queue, fastDFSUtil, fileMoveHelper));
         // 启动生产者
         executor.execute(this);
     }

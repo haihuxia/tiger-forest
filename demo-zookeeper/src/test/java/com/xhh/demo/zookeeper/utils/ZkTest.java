@@ -1,6 +1,6 @@
 package com.xhh.demo.zookeeper.utils;
 
-import com.xhh.demo.utils.ZookeeperLock;
+import com.xhh.demo.dfs.utils.ZookeeperLock;
 import com.xhh.demo.zookeeper.BaseTest;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;

@@ -1,7 +1,7 @@
 package com.xhh.demo.dfs;
 
-import com.xhh.demo.dfs.dal.mapper.DBDataMapper;
 import com.xhh.demo.dfs.dal.models.DBModelDO;
+import com.xhh.demo.dfs.helper.FileMoveHelper;
 import com.xhh.demo.dfs.utils.FastDFSUtil;
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,8 +25,8 @@ public class FileMoveConsumer implements Runnable {
     /** fastdfs util */
     private final FastDFSUtil fastDFSUtil;
 
-    /** 数据操作 mapper */
-    private final DBDataMapper dbDataMapper;
+    /** 数据迁移 helper */
+    private final FileMoveHelper fileMoveHelper;
 
     /** nfs 路径 */
     private final static String NFS_PATH = "/NFiles/upload/realname/";
@@ -35,12 +35,14 @@ public class FileMoveConsumer implements Runnable {
      * 构造函数
      *
      * @param queue 队列
+     * @param fastDFSUtil fastdfs
+     * @param fileMoveHelper 迁移 helper
      */
     public FileMoveConsumer(ArrayBlockingQueue<DBModelDO> queue, FastDFSUtil fastDFSUtil,
-                            DBDataMapper dbDataMapper) {
+                            FileMoveHelper fileMoveHelper) {
         this.queue = queue;
         this.fastDFSUtil = fastDFSUtil;
-        this.dbDataMapper = dbDataMapper;
+        this.fileMoveHelper = fileMoveHelper;
     }
 
     /**
@@ -67,7 +69,7 @@ public class FileMoveConsumer implements Runnable {
                 // 开始处理
                 Map<String, String> map = fastDFSUtil.uploadByPath(nfsFilePath);
                 // 更新数据
-                dbDataMapper.update(model.getId(), map.get("REMOTE_FILE_NAME"));
+                fileMoveHelper.modify(model.getId(), map.get("REMOTE_FILE_NAME"));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -39,4 +39,16 @@ public class DBDataMapperTest extends BaseTest {
         List<DBModelDO> list = dbDataMapper.selectByPage(1, 10);
         log.debug("dbDataMapper.selectByPage: {}", list.size());
     }
+
+    /**
+     * 更新数据
+     */
+    @Test
+    public void update() {
+        List<DBModelDO> list = dbDataMapper.selectByPage(1, 10);
+        DBModelDO dbModelDO = list.get(0);
+        log.debug("dbModelDO: {}", dbModelDO);
+        int count = dbDataMapper.update(dbModelDO.getId(), dbModelDO.getFileName());
+        log.debug("dbDataMapper.update: {}", count);
+    }
 }

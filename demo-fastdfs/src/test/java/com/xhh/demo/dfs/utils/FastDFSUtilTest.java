@@ -1,7 +1,6 @@
-package com.xhh.demo.utils;
+package com.xhh.demo.dfs.utils;
 
 import com.xhh.demo.dfs.BaseTest;
-import com.xhh.demo.dfs.utils.FastDFSUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

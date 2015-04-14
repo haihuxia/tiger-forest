@@ -27,7 +27,7 @@ public class FileMoveController {
      */
     @RequestMapping(value={"/move.do"})
     public String move() {
-        log.debug("---------------------------");
+        log.debug("start move...");
         fileMoveProvider.moveFile();
         return "index.jsp";
     }

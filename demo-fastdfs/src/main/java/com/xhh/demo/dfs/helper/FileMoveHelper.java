@@ -28,8 +28,8 @@ public class FileMoveHelper {
      * @return 数据条数
      */
     public int queryCount() {
-        return dbDataMapper.selectCount();
-//        return 100;
+//        return dbDataMapper.selectCount();
+        return 2;
     }
 
     /**
@@ -52,5 +52,16 @@ public class FileMoveHelper {
 //            list.add(model);
 //        }
 //        return list;
+    }
+
+    /**
+     * 数据更新
+     *
+     * @param id id
+     * @param fileName 文件名
+     * @return 更新条数
+     */
+    public int modify(String id, String fileName) {
+        return dbDataMapper.update(id, fileName);
     }
 }

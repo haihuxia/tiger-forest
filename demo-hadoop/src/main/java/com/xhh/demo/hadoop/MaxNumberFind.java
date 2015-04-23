@@ -4,17 +4,14 @@ import com.xhh.demo.hadoop.number.MaxNumberCombiner;
 import com.xhh.demo.hadoop.number.MaxNumberMapper;
 import com.xhh.demo.hadoop.number.MaxNumberReducer;
 import com.xhh.demo.hadoop.number.MaxNumberSort;
-import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.FileInputFormat;
 import org.apache.hadoop.mapred.FileOutputFormat;
 import org.apache.hadoop.mapred.JobClient;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.TextInputFormat;
 import org.apache.hadoop.mapred.TextOutputFormat;
-import org.apache.hadoop.mapreduce.Job;
 
 /**
  * 从 HDFS 中的文件中查找最大的5个数字

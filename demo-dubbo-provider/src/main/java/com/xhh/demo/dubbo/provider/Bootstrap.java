@@ -17,15 +17,21 @@ public class Bootstrap extends AbstractIdleService {
 
     private ClassPathXmlApplicationContext context;
 
+    /**
+     * java -jar 启动应用程序入口
+     *
+     * <p>对应项目 Bootstrap 类的 main 方法</p>
+     *
+     * @param args 启动参数
+     */
     public static void main(String[] args) {
         Bootstrap bootstrap = new Bootstrap();
+        // 启动应用
         bootstrap.startAsync();
 
-//        DemoSignal demoSignal = new DemoSignal(bootstrap);
-//        // 捕获 kill 命令
-//        Signal.handle(new Signal("TERM"), demoSignal);
-//        log.info("demoSignal TERM ---------------------");
-
+        DemoSignal demoSignal = new DemoSignal(bootstrap);
+        // 捕获 kill 命令
+        Signal.handle(new Signal("TERM"), demoSignal);
         try {
             Object lock = new Object();
             synchronized (lock) {

@@ -14,19 +14,29 @@ import sun.misc.SignalHandler;
 @Slf4j
 public class DemoSignal implements SignalHandler {
 
+    // 应用启动对象
     private final Bootstrap bootstrap;
 
+    /**
+     * 构造函数
+     *
+     * @param bootstrap 启动对象
+     */
     public DemoSignal(Bootstrap bootstrap) {
         this.bootstrap = bootstrap;
     }
 
+    /**
+     * 捕获信息处理
+     *
+     * @param signal 信号
+     */
     @Override
     public void handle(Signal signal) {
-        log.info("context.stop()--------------");
-        log.info("context.stop()--------------");
         try {
+            // 资源释放
             bootstrap.stopAsync();
-
+            // 应用退出
             System.exit(0);
         } catch (Exception e) {
             e.printStackTrace();

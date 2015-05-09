@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:demo="http://www.xhh.com/schema/demo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+      http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.0.xsd
+      http://www.xhh.com/schema/demo
+      http://www.xhh.com/schema/demo/demo.xsd"
+       default-lazy-init="true">
+
+    <!-- 使用annotation 自动注册bean,并保证@Required,@Autowired的属性被注入 -->
+    <context:component-scan base-package="com.xhh.demo.spring"/>
+
+    <demo:dateformat id="dateFormat1" pattern="yyyy-MM-dd HH:mm" lenient="true"/>
+
+
+    <demo:component id="bionic-family" name="Bionic-1">
+        <demo:component name="Mother-1">
+            <demo:component name="Karate-1"/>
+            <demo:component name="Sport-1"/>
+        </demo:component>
+        <demo:component name="Rock-1"/>
+    </demo:component>
+
+    <bean id="dateFormat" class="java.text.SimpleDateFormat">
+        <constructor-arg value="yyyy-HH-dd HH:mm"/>
+        <property name="lenient" value="true"/>
+    </bean>
+
+</beans>

@@ -1,5 +1,7 @@
 package com.xhh.demo.http.other;
 
+import lombok.Getter;
+
 /**
  * Box builder
  *
@@ -9,6 +11,14 @@ package com.xhh.demo.http.other;
  */
 public class Box {
 
+    String color;
+    String name;
+
+    public Box(Builder builder) {
+        this.color = builder.getColor();
+        this.name = builder.getName();
+    }
+
     public static Builder builder() {
         return new Builder();
     }
@@ -17,7 +27,14 @@ public class Box {
 
         private Builder() {}
 
+        public Box build() {
+            return new Box(this);
+        }
+
+        @Getter
         private String color;
+
+        @Getter
         private String name;
 
         public Builder color(String color) {

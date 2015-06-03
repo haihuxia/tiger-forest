@@ -21,10 +21,10 @@ public class Bootstrap extends AbstractIdleService {
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.startAsync();
 
-//        DemoSignal demoSignal = new DemoSignal(bootstrap);
-//        // 捕获 kill 命令
-//        Signal.handle(new Signal("TERM"), demoSignal);
-//        log.info("demoSignal TERM ---------------------");
+        DemoSignal demoSignal = new DemoSignal(bootstrap);
+        // 捕获 kill 命令
+        Signal.handle(new Signal("TERM"), demoSignal);
+        log.info("demoSignal TERM ---------------------");
 
         try {
             Object lock = new Object();

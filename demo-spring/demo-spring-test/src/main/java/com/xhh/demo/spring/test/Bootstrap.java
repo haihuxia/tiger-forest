@@ -1,9 +1,8 @@
-package com.xhh.demo.dubbo.provider;
+package com.xhh.demo.spring.test;
 
 import com.google.common.util.concurrent.AbstractIdleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import sun.misc.Signal;
 
 /**
  * Bootstrap
@@ -57,5 +56,4 @@ public class Bootstrap extends AbstractIdleService {
         context.stop();
         log.info("tasks stopped successfully");
     }
-
 }

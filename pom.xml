@@ -17,8 +17,8 @@
         <module>demo-dispatch</module>
         <module>demo-zookeeper</module>
         <module>demo-fastdfs</module>
-        <module>demo-dubbo-consumer</module>
-        <module>demo-dubbo-provider</module>
+        <module>demo-spring</module>
+        <module>demo-dubbo</module>
     </modules>
 
     <properties>

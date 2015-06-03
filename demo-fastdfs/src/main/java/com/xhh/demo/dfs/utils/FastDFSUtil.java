@@ -1,15 +1,21 @@
 package com.xhh.demo.dfs.utils;
 
+import com.xhh.demo.dfs.pool.FastDFSFactory;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.pool2.ObjectPool;
+import org.apache.commons.pool2.PooledObjectFactory;
+import org.apache.commons.pool2.impl.GenericObjectPool;
+import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.csource.fastdfs.*;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ResourceUtils;
 
 import javax.annotation.PostConstruct;
-import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,26 +33,38 @@ import java.util.Map;
 public class FastDFSUtil {
 
     /**
-     * DFS配置文件
+     * DFS 配置文件
      */
-    private final static String CONFIG_FILE_NAME = "fastdfs.conf";
+    private final static String FASTDFS_CONFI = "fastdfs.conf";
 
-    /**
-     * dfs配置文件
-     */
-    private File dfsConfFile;
+    private ObjectPool<TrackerServer> pool;
 
     /**
      * 初始化DFS配置
      */
     @PostConstruct
-    public void init() {
+    public void init() throws IOException {
+        String fastdfsConfigFilePath =
+                ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX + FASTDFS_CONFI).getAbsolutePath();
         try {
-            ClientGlobal.init(CONFIG_FILE_NAME);
+            ClientGlobal.init(fastdfsConfigFilePath);
+            initPool();
             log.info("DFS init finished success");
         } catch (Exception e) {
-            log.error("static init error:{}", e);
+            log.error("FastDFSUtil init error: {}", e);
         }
+    }
+
+    /**
+     * 初始化连接池
+     */
+    public void initPool() {
+        PooledObjectFactory<TrackerServer> factory = new FastDFSFactory();
+        GenericObjectPoolConfig config = new GenericObjectPoolConfig();
+        config.setMaxIdle(15);
+        config.setMaxTotal(20);
+        config.setMinIdle(6);
+        pool = new GenericObjectPool<TrackerServer>(factory, config);
     }
 
     /**

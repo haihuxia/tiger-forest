@@ -1,5 +1,7 @@
 package com.xhh.demo.http.other;
 
+import java.net.*;
+
 /**
  * Box Builder test
  *
@@ -25,5 +27,28 @@ public class BoxTest {
         c = c - d;
         System.out.println("c: " + c);
         System.out.println("d: " + d);
+
+        try {
+            System.out.println(InetAddress.getLocalHost().getHostAddress());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            Socket socket = new Socket();
+            try {
+                SocketAddress addr = new InetSocketAddress("192.178.106.224", 2181);
+                socket.connect(addr, 1000);
+                System.out.println(socket.getLocalAddress().getHostAddress());
+            } finally {
+                try {
+                    socket.close();
+                } catch (Throwable e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -4,7 +4,11 @@ import com.xhh.demo.dubbo.provider.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * 测试处理类
@@ -14,7 +18,7 @@ import org.springframework.stereotype.Service;
  * @since 1.6
  */
 @Slf4j
-@Service
+@Controller
 public class DemoAction {
 
     @Autowired
@@ -30,5 +34,14 @@ public class DemoAction {
                 e.printStackTrace();
             }
         }
+    }
+
+    @RequestMapping(value = "/say", method = RequestMethod.GET)
+    @ResponseBody
+    public String doSayHello(@RequestParam String name) {
+        log.debug("------------name: {}", name);
+        String result = demoService.sayHello(name);
+        log.debug("------------result: {}", result);
+        return result;
     }
 }

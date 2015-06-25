@@ -1,4 +1,4 @@
-package com.xhh.demo.dubbo.provider;
+package com.xhh.demo.dubbo.provider.api;
 
 /**
  * 测试接口

@@ -14,6 +14,6 @@
 
     <dubbo:protocol name="dubbo" port="${zookeeper.port}"/>
 
-    <dubbo:service interface="com.xhh.demo.dubbo.provider.DemoService" ref="demoServiceImpl"/>
+    <dubbo:service interface="com.xhh.demo.dubbo.provider.api.DemoService" ref="demoServiceImpl"/>
 
 </beans>

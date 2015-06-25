@@ -1,7 +1,7 @@
 package com.xhh.demo.dubbo.provider.impl;
 
 import com.alibaba.dubbo.rpc.RpcContext;
-import com.xhh.demo.dubbo.provider.DemoService;
+import com.xhh.demo.dubbo.provider.api.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.springframework.stereotype.Service;

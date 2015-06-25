@@ -3,19 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>tiger-forest</artifactId>
+        <artifactId>demo-dubbo</artifactId>
         <groupId>com.xhh.demo</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>demo-dubbo</artifactId>
-    <packaging>pom</packaging>
-    <name>Demo Dubbo</name>
-
-    <modules>
-        <module>demo-dubbo-consumer</module>
-        <module>demo-dubbo-provider</module>
-        <module>demo-dubbo-provider-api</module>
-    </modules>
+    <artifactId>demo-dubbo-provider-api</artifactId>
+    <packaging>jar</packaging>
+    <name>Demo Dubbo Provider Api</name>
 
 </project>

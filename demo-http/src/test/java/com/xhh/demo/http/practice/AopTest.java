@@ -1,7 +1,7 @@
 package com.xhh.demo.http.practice;
 
 import com.xhh.demo.http.BaseSpringTest;
-import com.xhh.demo.http.practice.aop.spring.BookServiceImpl;
+import com.xhh.demo.http.aop.spring.BookServiceImpl;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

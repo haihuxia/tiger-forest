@@ -16,7 +16,7 @@ public class DynamicConst {
     }
 
     interface Const {
-        public static final int RAND_CONST = new Random().nextInt();
+        int RAND_CONST = new Random().nextInt();
     }
 
 }

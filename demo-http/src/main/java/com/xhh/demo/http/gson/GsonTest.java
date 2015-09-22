@@ -17,10 +17,25 @@ import java.util.Map;
  */
 public class GsonTest {
 
-    private static Map<String, String> parseData(String data){
+    private static Map<String, String> parseData(String data) {
         GsonBuilder gb = new GsonBuilder();
         Gson g = gb.create();
         return g.fromJson(data, new TypeToken<Map<String, String>>() {}.getType());
+    }
+
+    private static Object parseToObject(String data) {
+        GsonBuilder gb = new GsonBuilder();
+        Gson g = gb.create();
+        return g.fromJson(data, GsonTest.Persion.class);
+    }
+
+    class Persion {
+        private String name;
+        private String age;
+
+        public String toString() {
+            return "name: " + name + ", age: " + age;
+        }
     }
 
     public static void main(String[] args) {
@@ -35,8 +50,11 @@ public class GsonTest {
             System.out.println(i + "  " + list.get(i));
         }
 
-        String jsonData = "{'name':'yang','age':2}";
+        String jsonData = "{'name':'yang', 'age':2, 'sex':'male'}";
         Map<String,String> map = parseData(jsonData);
         System.out.println("map: " + map);
+
+        GsonTest.Persion p = (GsonTest.Persion)parseToObject(jsonData);
+        System.out.println(p.toString());
     }
 }

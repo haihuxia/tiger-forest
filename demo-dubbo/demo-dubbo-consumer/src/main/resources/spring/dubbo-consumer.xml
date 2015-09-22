@@ -14,6 +14,8 @@
 
     <dubbo:protocol name="dubbo" port="${zookeeper.port}"/>
 
-    <dubbo:reference id="demoService" retries="0" timeout="10000" interface="com.xhh.demo.dubbo.provider.DemoService"/>
+    <dubbo:reference id="demoService" retries="0" timeout="2000" interface="com.xhh.demo.dubbo.provider.api.DemoService"/>
+
+    <dubbo:reference id="registryService" interface="com.alibaba.dubbo.registry.RegistryService" check="false" />
 
 </beans>

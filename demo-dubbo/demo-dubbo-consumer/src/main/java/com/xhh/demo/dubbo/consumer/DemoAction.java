@@ -1,6 +1,7 @@
 package com.xhh.demo.dubbo.consumer;
 
-import com.xhh.demo.dubbo.provider.DemoService;
+import com.alibaba.dubbo.registry.RegistryService;
+import com.xhh.demo.dubbo.provider.api.DemoService;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,9 @@ public class DemoAction {
     @Autowired
     private DemoService demoService;
 
+    @Autowired
+    private RegistryService registryService;
+
     public void doSayHello() {
         for (int i = 0; i < Integer.MAX_VALUE; i ++) {
             try {
@@ -40,6 +44,7 @@ public class DemoAction {
     @ResponseBody
     public String doSayHello(@RequestParam String name) {
         log.debug("------------name: {}", name);
+        log.debug(registryService.hashCode() + "");
         String result = demoService.sayHello(name);
         log.debug("------------result: {}", result);
         return result;

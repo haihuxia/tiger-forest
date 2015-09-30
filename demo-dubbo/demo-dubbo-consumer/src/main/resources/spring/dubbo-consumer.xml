@@ -12,7 +12,7 @@
 
     <dubbo:registry address="zookeeper://${zookeeper.url}"/>
 
-    <dubbo:protocol name="dubbo" port="${zookeeper.port}"/>
+    <!--<dubbo:protocol name="dubbo" port="${zookeeper.port}"/>-->
 
     <dubbo:reference id="demoService" retries="0" timeout="2000" interface="com.xhh.demo.dubbo.provider.api.DemoService"/>
 

@@ -7,7 +7,6 @@ import com.google.common.collect.*;
 import com.google.common.primitives.Ints;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -58,7 +57,7 @@ public class GuavaCollections {
 
         Map<String, Integer> filterMap = Maps.filterValues(filter, new Predicate<Integer>() {
             @Override
-            public boolean apply(@Nullable Integer input) {
+            public boolean apply(Integer input) {
                 return input > 21;
             }
         });

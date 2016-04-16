@@ -15,6 +15,7 @@
     <modules>
         <module>demo-spring-schema</module>
         <module>demo-spring-test</module>
+        <module>demo-spring-boot</module>
     </modules>
 
 </project>

@@ -6,11 +6,15 @@ import com.xhh.demo.spring.boot.config.ApiUrls;
 import com.xhh.demo.spring.boot.dto.PersonDTO;
 import com.xhh.demo.spring.boot.hystrix.PsersonService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.ThreadContext;
+import org.slf4j.impl.StaticMDCBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 /**
  * Person Controller
@@ -39,7 +43,8 @@ public class PersonController {
     @ApiOperation(value = "显示用户信息")
     public PersonDTO showPerson() {
         log.info("-------------: {}", a);
-        log.info("-------------: {}", a);
+        ThreadContext.put("LOGID", UUID.randomUUID().toString());
+        log.info("+++++++++++++: {}", StaticMDCBinder.SINGLETON.getMDCA().get("LOGID"));
         return new PersonDTO("tiger", "tiger@gmail.com");
     }
 

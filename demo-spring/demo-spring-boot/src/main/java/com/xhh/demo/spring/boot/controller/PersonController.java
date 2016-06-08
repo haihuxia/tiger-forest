@@ -7,7 +7,6 @@ import com.xhh.demo.spring.boot.dto.PersonDTO;
 import com.xhh.demo.spring.boot.hystrix.PsersonService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.ThreadContext;
-import org.slf4j.impl.StaticMDCBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -44,7 +43,7 @@ public class PersonController {
     public PersonDTO showPerson() {
         log.info("-------------: {}", a);
         ThreadContext.put("LOGID", UUID.randomUUID().toString());
-        log.info("+++++++++++++: {}", StaticMDCBinder.SINGLETON.getMDCA().get("LOGID"));
+        log.info("+++++++++++++: {}", ThreadContext.get("LOGID"));
         return new PersonDTO("tiger", "tiger@gmail.com");
     }
 

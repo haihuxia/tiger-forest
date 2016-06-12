@@ -5,7 +5,7 @@ import com.xhh.demo.dubbo.provider.api.DemoService;
 import com.xhh.demo.spring.boot.config.ApiUrls;
 import com.xhh.demo.spring.boot.dto.PersonDTO;
 import com.xhh.demo.spring.boot.hystrix.PsersonService;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.ThreadContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,7 +21,7 @@ import java.util.UUID;
  * @author tiger
  * @version 1.0.0 createTime: 15/6/17 上午12:32
  */
-@Slf4j
+@Log4j2
 @RestController
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class PersonController {
@@ -43,6 +43,14 @@ public class PersonController {
     public PersonDTO showPerson() {
         log.info("-------------: {}", a);
         ThreadContext.put("LOGID", UUID.randomUUID().toString());
+        ((Runnable) () -> {
+            try {
+                Thread.sleep(7000);
+                log.info("Runnable: {}", ThreadContext.get("LOGID"));
+            } catch (Exception e) {
+                log.error("error: {}", e);
+            }
+        }).run();
         log.info("+++++++++++++: {}", ThreadContext.get("LOGID"));
         return new PersonDTO("tiger", "tiger@gmail.com");
     }

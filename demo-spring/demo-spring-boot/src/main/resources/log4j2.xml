@@ -28,7 +28,7 @@
                 additivity="true">
             <AppenderRef ref="running-log" />
         </Logger>
-        <Root level="error">
+        <Root level="info">
             <AppenderRef ref="Console" />
         </Root>
     </Loggers>

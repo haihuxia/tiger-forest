@@ -45,10 +45,10 @@
         <joda-time.version>2.3</joda-time.version>
         <zkclient.version>0.3</zkclient.version>
         <logback-core.version>1.0.13</logback-core.version>
-        <junit.version>4.11</junit.version>
+        <spring.test.version>4.1.9.RELEASE</spring.test.version>
+        <junit.version>4.12</junit.version>
         <guava.version>15.0</guava.version>
         <spring.boot.version>1.2.5.RELEASE</spring.boot.version>
-        <log4j2.version>2.6</log4j2.version>
     </properties>
 
     <dependencyManagement>
@@ -257,26 +257,22 @@
             </dependency>
 
             <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.test.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.mockito</groupId>
                 <artifactId>mockito-all</artifactId>
                 <version>${mockito.version}</version>
                 <scope>test</scope>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-api</artifactId>
-                <version>${log4j2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-core</artifactId>
-                <version>${log4j2.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-web</artifactId>
-                <version>${log4j2.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

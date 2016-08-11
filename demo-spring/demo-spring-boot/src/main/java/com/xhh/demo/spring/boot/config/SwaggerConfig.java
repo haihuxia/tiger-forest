@@ -42,12 +42,12 @@ public class SwaggerConfig {
                 .enable(enabled)
                 .select()
                 .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
-                .paths(PathSelectors.regex(".*/api/v1/.*"))
+                .paths(PathSelectors.regex("/api/v1/.*"))
                 .build();
     }
 
     /**
-     * 插件整体描述信息
+     * api 描述信息
      *
      * @return api 描述信息
      */
@@ -60,8 +60,8 @@ public class SwaggerConfig {
     }
 
     public static void main(String[] args) {
-        String input = "/example/api/v1/getIp";
-        String pathRegex = ".*/api/v1/.*";
+        String input = "/api/v1/showPerson";
+        String pathRegex = "/api/v1/.*";
         System.out.println(input.matches(pathRegex));
 
         AntPathMatcher matcher = new AntPathMatcher();

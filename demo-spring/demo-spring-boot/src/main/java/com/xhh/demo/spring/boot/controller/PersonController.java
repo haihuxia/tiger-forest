@@ -1,10 +1,11 @@
 package com.xhh.demo.spring.boot.controller;
 
-import com.wordnik.swagger.annotations.ApiOperation;
 import com.xhh.demo.dubbo.provider.api.DemoService;
 import com.xhh.demo.spring.boot.config.ApiUrls;
 import com.xhh.demo.spring.boot.dto.PersonDTO;
 import com.xhh.demo.spring.boot.hystrix.PsersonService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.ThreadContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import java.util.UUID;
  * @author tiger
  * @version 1.0.0 createTime: 15/6/17 上午12:32
  */
+@Api
 @Log4j2
 @RestController
 @RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)

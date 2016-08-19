@@ -16,7 +16,9 @@
         <module>demo-spring-schema</module>
         <module>demo-spring-test</module>
         <module>demo-spring-boot</module>
-        <module>demo-spring-netflix</module>
+        <module>demo-spring-eureka-client</module>
+        <module>demo-spring-eureka-server</module>
+        <module>demo-spring-eureka-service</module>
     </modules>
 
 </project>

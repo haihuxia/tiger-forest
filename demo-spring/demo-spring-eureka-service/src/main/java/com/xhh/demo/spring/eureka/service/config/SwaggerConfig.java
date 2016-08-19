@@ -1,4 +1,4 @@
-package com.xhh.demo.spring.boot.config;
+package com.xhh.demo.spring.eureka.service.config;
 
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +8,7 @@ import org.springframework.util.AntPathMatcher;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -42,16 +43,16 @@ public class SwaggerConfig {
                 .enable(enabled)
                 .select()
                 .apis(RequestHandlerSelectors.withClassAnnotation(Api.class))
-                .paths(PathSelectors.regex("/api/v1/.*"))
+                .paths(PathSelectors.regex(".*/api/v1/.*"))
                 .build();
     }
 
     /**
-     * api 描述信息
+     * 插件整体描述信息
      *
      * @return api 描述信息
      */
-    private springfox.documentation.service.ApiInfo apiInfo() {
+    private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("Xhh API")
                 .description("Xhh API")
@@ -60,8 +61,8 @@ public class SwaggerConfig {
     }
 
     public static void main(String[] args) {
-        String input = "/api/v1/showPerson";
-        String pathRegex = "/api/v1/.*";
+        String input = "/example/api/v1/getIp";
+        String pathRegex = ".*/api/v1/.*";
         System.out.println(input.matches(pathRegex));
 
         AntPathMatcher matcher = new AntPathMatcher();

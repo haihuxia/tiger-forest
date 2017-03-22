@@ -7,6 +7,10 @@ server:
   port: 8082
 
 eureka:
+  instance:
+    hostname: localhost
+    metadata-map:
+      cluster: main
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka/

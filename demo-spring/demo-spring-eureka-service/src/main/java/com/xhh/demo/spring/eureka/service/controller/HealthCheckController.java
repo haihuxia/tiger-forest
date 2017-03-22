@@ -30,6 +30,12 @@ public class HealthCheckController {
     @Autowired
     DiscoveryClient client;
 
+    @RequestMapping("/")
+    public String hi() {
+        ServiceInstance localInstance = client.getLocalServiceInstance();
+        return "Hello World: "+ localInstance.getServiceId()+":"+localInstance.getHost()+":"+localInstance.getPort();
+    }
+
     @RequestMapping("/info")
     public String hello() {
         ServiceInstance localInstance = client.getLocalServiceInstance();

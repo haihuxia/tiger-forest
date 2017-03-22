@@ -27,10 +27,10 @@
         <Logger name="org.springframework" level="error"/>
         <Logger name="org.eclipse.jetty" level="error"/>
 
-        <Logger name="com.baofoo.example" level="${log4j2.level}"
-                additivity="true">
-            <AppenderRef ref="running-log" />
-        </Logger>
+        <!--<Logger name="com.baofoo.example" level="${log4j2.level}"-->
+                <!--additivity="true">-->
+            <!--<AppenderRef ref="running-log" />-->
+        <!--</Logger>-->
         <Root level="debug">
             <AppenderRef ref="Console" />
         </Root>

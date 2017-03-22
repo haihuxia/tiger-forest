@@ -12,12 +12,12 @@
 
     <modules>
         <module>demo-http</module>
-        <module>demo-bank</module>
         <module>demo-hadoop</module>
         <module>demo-zookeeper</module>
         <module>demo-fastdfs</module>
         <module>demo-spring</module>
         <module>demo-dubbo</module>
+        <module>demo-apache</module>
     </modules>
 
     <properties>
@@ -302,6 +302,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>tigerforest</finalName>

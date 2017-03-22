@@ -24,10 +24,10 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="com.xhh.demo.spring.boot" level="debug"
-                additivity="true">
-            <AppenderRef ref="running-log" />
-        </Logger>
+        <!--<Logger name="com.xhh.demo.spring.boot" level="debug"-->
+                <!--additivity="true">-->
+            <!--<AppenderRef ref="running-log" />-->
+        <!--</Logger>-->
         <Root level="info">
             <AppenderRef ref="Console" />
         </Root>

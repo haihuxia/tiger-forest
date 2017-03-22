@@ -57,6 +57,14 @@
       </plugin>
     </plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>4.1.9.RELEASE</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   <properties>
     <org.springframework.version>4.0.3.RELEASE</org.springframework.version>
   </properties>

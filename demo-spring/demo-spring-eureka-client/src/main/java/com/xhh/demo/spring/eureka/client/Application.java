@@ -6,6 +6,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
 /**
  * 应用启动入口
@@ -17,9 +18,10 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 @EnableEurekaClient
 @EnableFeignClients
 @EnableHystrix
+@EnableHystrixDashboard
 public class Application {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder().bannerMode(Banner.Mode.OFF).sources(Application.class).run(args);
+        new SpringApplicationBuilder().bannerMode(Banner.Mode.OFF).web(true).sources(Application.class).run(args);
     }
 }

@@ -69,8 +69,9 @@
 
     <!-- INFO 输出到 info.log、ERROR 输出到 error.log -->
     <root level="${logger.logLevel}" name="com.bestpay">
-        <appender-ref ref="${logger.info.appender}"/>
-        <appender-ref ref="${logger.error.appender}"/>
+        <appender-ref ref="stdout"/>
+        <!--<appender-ref ref="${logger.info.appender}"/>-->
+        <!--<appender-ref ref="${logger.error.appender}"/>-->
     </root>
 
 </configuration>

@@ -25,10 +25,6 @@
                     <artifactId>logback-classic</artifactId>
                     <groupId>ch.qos.logback</groupId>
                 </exclusion>
-                <exclusion>
-                    <artifactId>classmate</artifactId>
-                    <groupId>com.fasterxml</groupId>
-                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
@@ -74,6 +70,13 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-ribbon</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>org.springframework.boot</groupId>-->
             <!--<artifactId>spring-boot-starter-actuator</artifactId>-->

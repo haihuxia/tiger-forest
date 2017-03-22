@@ -19,6 +19,7 @@
         <module>demo-spring-eureka-client</module>
         <module>demo-spring-eureka-server</module>
         <module>demo-spring-eureka-service</module>
+        <module>demo-spring-eureka-turbine</module>
     </modules>
 
 </project>

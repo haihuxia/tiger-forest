@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="off" monitorInterval="1800">
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%X{LOGID}] %highlight{%-5level [%file:%line]} - %msg%n" />
+        </Console>
+
+    </Appenders>
+
+    <Loggers>
+        <Logger name="com.xhh.demo.apache.shiro" level="debug"/>
+
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+</Configuration>

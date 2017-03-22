@@ -1,5 +1,6 @@
 package com.xhh.demo.spring.eureka.client.controller;
 
+import com.xhh.demo.spring.eureka.client.api.CheckService;
 import com.xhh.demo.spring.eureka.client.api.HealthCheckClient;
 import com.xhh.demo.spring.eureka.client.api.HytrixHealthCheckClient;
 import com.xhh.demo.spring.eureka.client.config.ApiUrls;
@@ -7,8 +8,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,9 +33,17 @@ public class HealthCheckController {
     @Autowired
     private HytrixHealthCheckClient hytrixHealthCheckClient;
 
+    @Autowired
+    private CheckService checkService;
+
     @RequestMapping("/info")
     public String hello() {
         return "success";
+    }
+
+    @RequestMapping("/")
+    public String check1() {
+        return checkService.check1();
     }
 
     @RequestMapping(value = ApiUrls.HEALTH_CHECK_V1, method = RequestMethod.GET)

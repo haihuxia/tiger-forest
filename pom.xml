@@ -18,6 +18,7 @@
         <module>demo-spring</module>
         <module>demo-dubbo</module>
         <module>demo-apache</module>
+        <module>demo-algorithms</module>
     </modules>
 
     <properties>

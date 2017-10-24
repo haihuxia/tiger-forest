@@ -16,4 +16,6 @@ public interface DemoService {
      * @return 问候语
      */
     String sayHello(String name);
+
+    String bye(String name);
 }

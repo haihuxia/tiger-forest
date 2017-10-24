@@ -29,4 +29,9 @@ public class DemoServiceImpl implements DemoService {
                 RpcContext.getContext().getRemoteAddress());
         return "Hello " + name + ", response form provider: " + RpcContext.getContext().getLocalAddress();
     }
+
+    @Override
+    public String bye(String name) {
+        return "bye " + name;
+    }
 }

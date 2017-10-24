@@ -8,7 +8,7 @@
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 
     <!-- Application name -->
-    <dubbo:application name="service-consumer"/>
+    <dubbo:application name="service-monitor"/>
 
     <dubbo:registry address="zookeeper://${zookeeper.url}"/>
 

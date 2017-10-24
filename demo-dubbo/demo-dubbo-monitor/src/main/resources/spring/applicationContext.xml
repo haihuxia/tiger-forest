@@ -5,6 +5,6 @@
       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
        default-lazy-init="true">
 
-    <import resource="classpath:spring/dubbo-consumer.xml"/>
+    <import resource="classpath:spring/dubbo-provider.xml"/>
 
 </beans>

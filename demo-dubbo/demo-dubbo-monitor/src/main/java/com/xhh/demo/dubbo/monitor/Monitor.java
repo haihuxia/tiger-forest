@@ -19,8 +19,9 @@ public class Monitor implements MonitorService {
 
     @Override
     public void collect(URL statistics) {
-        log.debug(statistics.getParameter(MonitorService.METHOD));
         log.debug("URL: {}", statistics.toFullString());
+        log.debug(statistics.getParameter(MonitorService.SUCCESS));
+
     }
 
     @Override

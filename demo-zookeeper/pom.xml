@@ -13,7 +13,7 @@
     <name>Demo ZooKeeper</name>
 
     <properties>
-        <org.springframework.version>4.0.3.RELEASE</org.springframework.version>
+        <org.springframework.version>4.3.17.RELEASE</org.springframework.version>
     </properties>
 
     <dependencies>

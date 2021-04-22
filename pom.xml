@@ -26,7 +26,7 @@
         <maven.compiler.version>3.1</maven.compiler.version>
         <maven.resources.version>2.4.3</maven.resources.version>
         <maven.jar.version>2.3</maven.jar.version>
-        <mybatis.version>3.2.0</mybatis.version>
+        <mybatis.version>3.5.6</mybatis.version>
         <mybatis-spring.version>1.1.1</mybatis-spring.version>
         <commons-configuration.version>1.9</commons-configuration.version>
         <commons-chain.version>1.2</commons-chain.version>

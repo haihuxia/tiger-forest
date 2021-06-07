@@ -40,7 +40,7 @@
         <commons-lang3.version>3.1</commons-lang3.version>
         <autoconfig.plugin.version>1.2</autoconfig.plugin.version>
         <mockito.version>1.8.5</mockito.version>
-        <logback.version>1.0.13</logback.version>
+        <logback.version>1.2.0</logback.version>
         <joda-time.version>2.3</joda-time.version>
         <zkclient.version>0.3</zkclient.version>
         <logback-core.version>1.0.13</logback-core.version>

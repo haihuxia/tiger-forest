@@ -43,7 +43,7 @@
         <logback.version>1.0.13</logback.version>
         <joda-time.version>2.3</joda-time.version>
         <zkclient.version>0.3</zkclient.version>
-        <logback-core.version>1.0.13</logback-core.version>
+        <logback-core.version>1.2.0</logback-core.version>
         <spring.test.version>4.1.9.RELEASE</spring.test.version>
         <junit.version>4.12</junit.version>
         <guava.version>19.0</guava.version>
